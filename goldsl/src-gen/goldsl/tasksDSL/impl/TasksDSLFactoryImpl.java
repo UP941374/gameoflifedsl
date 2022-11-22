@@ -6,6 +6,7 @@ package goldsl.tasksDSL.impl;
 import goldsl.tasksDSL.*;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -65,8 +66,9 @@ public class TasksDSLFactoryImpl extends EFactoryImpl implements TasksDSLFactory
   {
     switch (eClass.getClassifierID())
     {
-      case TasksDSLPackage.MODEL: return createModel();
-      case TasksDSLPackage.GREETING: return createGreeting();
+      case TasksDSLPackage.GAMEOFLIFE: return createGameoflife();
+      case TasksDSLPackage.CELL: return createCell();
+      case TasksDSLPackage.RULE: return createRule();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -78,10 +80,17 @@ public class TasksDSLFactoryImpl extends EFactoryImpl implements TasksDSLFactory
    * @generated
    */
   @Override
-  public Model createModel()
+  public Object createFromString(EDataType eDataType, String initialValue)
   {
-    ModelImpl model = new ModelImpl();
-    return model;
+    switch (eDataType.getClassifierID())
+    {
+      case TasksDSLPackage.DIRECTION:
+        return createDirectionFromString(eDataType, initialValue);
+      case TasksDSLPackage.RULE_TYPE:
+        return createRuleTypeFromString(eDataType, initialValue);
+      default:
+        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+    }
   }
 
   /**
@@ -90,10 +99,97 @@ public class TasksDSLFactoryImpl extends EFactoryImpl implements TasksDSLFactory
    * @generated
    */
   @Override
-  public Greeting createGreeting()
+  public String convertToString(EDataType eDataType, Object instanceValue)
   {
-    GreetingImpl greeting = new GreetingImpl();
-    return greeting;
+    switch (eDataType.getClassifierID())
+    {
+      case TasksDSLPackage.DIRECTION:
+        return convertDirectionToString(eDataType, instanceValue);
+      case TasksDSLPackage.RULE_TYPE:
+        return convertRuleTypeToString(eDataType, instanceValue);
+      default:
+        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+    }
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Gameoflife createGameoflife()
+  {
+    GameoflifeImpl gameoflife = new GameoflifeImpl();
+    return gameoflife;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Cell createCell()
+  {
+    CellImpl cell = new CellImpl();
+    return cell;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Rule createRule()
+  {
+    RuleImpl rule = new RuleImpl();
+    return rule;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Direction createDirectionFromString(EDataType eDataType, String initialValue)
+  {
+    Direction result = Direction.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertDirectionToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public RuleType createRuleTypeFromString(EDataType eDataType, String initialValue)
+  {
+    RuleType result = RuleType.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertRuleTypeToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
   }
 
   /**

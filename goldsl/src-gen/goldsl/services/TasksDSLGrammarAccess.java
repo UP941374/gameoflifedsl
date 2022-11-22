@@ -6,7 +6,10 @@ package goldsl.services;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import java.util.List;
+import org.eclipse.xtext.Alternatives;
 import org.eclipse.xtext.Assignment;
+import org.eclipse.xtext.EnumLiteralDeclaration;
+import org.eclipse.xtext.EnumRule;
 import org.eclipse.xtext.Grammar;
 import org.eclipse.xtext.GrammarUtil;
 import org.eclipse.xtext.Group;
@@ -21,52 +24,263 @@ import org.eclipse.xtext.service.GrammarProvider;
 @Singleton
 public class TasksDSLGrammarAccess extends AbstractElementFinder.AbstractGrammarElementFinder {
 	
-	public class ModelElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "goldsl.TasksDSL.Model");
-		private final Assignment cGreetingsAssignment = (Assignment)rule.eContents().get(1);
-		private final RuleCall cGreetingsGreetingParserRuleCall_0 = (RuleCall)cGreetingsAssignment.eContents().get(0);
-		
-		//Model:
-		//    greetings+=Greeting*;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//greetings+=Greeting*
-		public Assignment getGreetingsAssignment() { return cGreetingsAssignment; }
-		
-		//Greeting
-		public RuleCall getGreetingsGreetingParserRuleCall_0() { return cGreetingsGreetingParserRuleCall_0; }
-	}
-	public class GreetingElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "goldsl.TasksDSL.Greeting");
+	public class GameoflifeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "goldsl.TasksDSL.Gameoflife");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cHelloKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Keyword cExclamationMarkKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cCellsAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cCellsCellParserRuleCall_0_0 = (RuleCall)cCellsAssignment_0.eContents().get(0);
+		private final Assignment cRulesAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cRulesRuleParserRuleCall_1_0 = (RuleCall)cRulesAssignment_1.eContents().get(0);
 		
-		//Greeting:
-		//    'Hello' name=ID '!';
+		//Gameoflife:
+		//    cells+=Cell*
+		//    rules+=Rule*
+		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'Hello' name=ID '!'
+		//cells+=Cell*
+		//rules+=Rule*
 		public Group getGroup() { return cGroup; }
 		
-		//'Hello'
-		public Keyword getHelloKeyword_0() { return cHelloKeyword_0; }
+		//cells+=Cell*
+		public Assignment getCellsAssignment_0() { return cCellsAssignment_0; }
 		
-		//name=ID
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		//Cell
+		public RuleCall getCellsCellParserRuleCall_0_0() { return cCellsCellParserRuleCall_0_0; }
 		
-		//ID
-		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+		//rules+=Rule*
+		public Assignment getRulesAssignment_1() { return cRulesAssignment_1; }
 		
-		//'!'
-		public Keyword getExclamationMarkKeyword_2() { return cExclamationMarkKeyword_2; }
+		//Rule
+		public RuleCall getRulesRuleParserRuleCall_1_0() { return cRulesRuleParserRuleCall_1_0; }
+	}
+	public class CellElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "goldsl.TasksDSL.Cell");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
+		private final Keyword cCellKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
+		private final Assignment cXAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
+		private final RuleCall cXINTTerminalRuleCall_0_1_0 = (RuleCall)cXAssignment_0_1.eContents().get(0);
+		private final Assignment cYAssignment_0_2 = (Assignment)cGroup_0.eContents().get(2);
+		private final RuleCall cYINTTerminalRuleCall_0_2_0 = (RuleCall)cYAssignment_0_2.eContents().get(0);
+		private final Group cGroup_0_3 = (Group)cGroup_0.eContents().get(3);
+		private final Assignment cNoAssignment_0_3_0 = (Assignment)cGroup_0_3.eContents().get(0);
+		private final RuleCall cNoINTTerminalRuleCall_0_3_0_0 = (RuleCall)cNoAssignment_0_3_0.eContents().get(0);
+		private final Assignment cDirAssignment_0_3_1 = (Assignment)cGroup_0_3.eContents().get(1);
+		private final RuleCall cDirDirectionEnumRuleCall_0_3_1_0 = (RuleCall)cDirAssignment_0_3_1.eContents().get(0);
+		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
+		private final Keyword cRandomKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final Assignment cNoAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cNoINTTerminalRuleCall_1_1_0 = (RuleCall)cNoAssignment_1_1.eContents().get(0);
+		
+		//Cell:
+		//    'Cell' x=INT y=INT (no=INT dir=Direction)? |
+		////    'Cells' x=INT y=INT no=INT dir=Direction |
+		//    'Random' no=INT
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//    'Cell' x=INT y=INT (no=INT dir=Direction)? |
+		////    'Cells' x=INT y=INT no=INT dir=Direction |
+		//    'Random' no=INT
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//'Cell' x=INT y=INT (no=INT dir=Direction)?
+		public Group getGroup_0() { return cGroup_0; }
+		
+		//'Cell'
+		public Keyword getCellKeyword_0_0() { return cCellKeyword_0_0; }
+		
+		//x=INT
+		public Assignment getXAssignment_0_1() { return cXAssignment_0_1; }
+		
+		//INT
+		public RuleCall getXINTTerminalRuleCall_0_1_0() { return cXINTTerminalRuleCall_0_1_0; }
+		
+		//y=INT
+		public Assignment getYAssignment_0_2() { return cYAssignment_0_2; }
+		
+		//INT
+		public RuleCall getYINTTerminalRuleCall_0_2_0() { return cYINTTerminalRuleCall_0_2_0; }
+		
+		//(no=INT dir=Direction)?
+		public Group getGroup_0_3() { return cGroup_0_3; }
+		
+		//no=INT
+		public Assignment getNoAssignment_0_3_0() { return cNoAssignment_0_3_0; }
+		
+		//INT
+		public RuleCall getNoINTTerminalRuleCall_0_3_0_0() { return cNoINTTerminalRuleCall_0_3_0_0; }
+		
+		//dir=Direction
+		public Assignment getDirAssignment_0_3_1() { return cDirAssignment_0_3_1; }
+		
+		//Direction
+		public RuleCall getDirDirectionEnumRuleCall_0_3_1_0() { return cDirDirectionEnumRuleCall_0_3_1_0; }
+		
+		////    'Cells' x=INT y=INT no=INT dir=Direction |
+		//    'Random' no=INT
+		public Group getGroup_1() { return cGroup_1; }
+		
+		////    'Cells' x=INT y=INT no=INT dir=Direction |
+		//    'Random'
+		public Keyword getRandomKeyword_1_0() { return cRandomKeyword_1_0; }
+		
+		//no=INT
+		public Assignment getNoAssignment_1_1() { return cNoAssignment_1_1; }
+		
+		//INT
+		public RuleCall getNoINTTerminalRuleCall_1_1_0() { return cNoINTTerminalRuleCall_1_1_0; }
+	}
+	public class RuleElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "goldsl.TasksDSL.Rule");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cRuleKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cTypeAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cTypeRuleTypeEnumRuleCall_1_0 = (RuleCall)cTypeAssignment_1.eContents().get(0);
+		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
+		private final Assignment cSignAssignment_2_0 = (Assignment)cAlternatives_2.eContents().get(0);
+		private final Keyword cSignLessThanSignKeyword_2_0_0 = (Keyword)cSignAssignment_2_0.eContents().get(0);
+		private final Keyword cEqualsSignKeyword_2_1 = (Keyword)cAlternatives_2.eContents().get(1);
+		private final Keyword cGreaterThanSignKeyword_2_2 = (Keyword)cAlternatives_2.eContents().get(2);
+		private final Assignment cNAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cNINTTerminalRuleCall_3_0 = (RuleCall)cNAssignment_3.eContents().get(0);
+		
+		//Rule:
+		//    'Rule' type=RuleType (sign = '<'|'='|'>') n=INT
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'Rule' type=RuleType (sign = '<'|'='|'>') n=INT
+		public Group getGroup() { return cGroup; }
+		
+		//'Rule'
+		public Keyword getRuleKeyword_0() { return cRuleKeyword_0; }
+		
+		//type=RuleType
+		public Assignment getTypeAssignment_1() { return cTypeAssignment_1; }
+		
+		//RuleType
+		public RuleCall getTypeRuleTypeEnumRuleCall_1_0() { return cTypeRuleTypeEnumRuleCall_1_0; }
+		
+		//(sign = '<'|'='|'>')
+		public Alternatives getAlternatives_2() { return cAlternatives_2; }
+		
+		//sign = '<'
+		public Assignment getSignAssignment_2_0() { return cSignAssignment_2_0; }
+		
+		//'<'
+		public Keyword getSignLessThanSignKeyword_2_0_0() { return cSignLessThanSignKeyword_2_0_0; }
+		
+		//'='
+		public Keyword getEqualsSignKeyword_2_1() { return cEqualsSignKeyword_2_1; }
+		
+		//'>'
+		public Keyword getGreaterThanSignKeyword_2_2() { return cGreaterThanSignKeyword_2_2; }
+		
+		//n=INT
+		public Assignment getNAssignment_3() { return cNAssignment_3; }
+		
+		//INT
+		public RuleCall getNINTTerminalRuleCall_3_0() { return cNINTTerminalRuleCall_3_0; }
 	}
 	
+	public class DirectionElements extends AbstractElementFinder.AbstractEnumRuleElementFinder {
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "goldsl.TasksDSL.Direction");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final EnumLiteralDeclaration cNORTHEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cNORTHNorthKeyword_0_0 = (Keyword)cNORTHEnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cEASTEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cEASTEastKeyword_1_0 = (Keyword)cEASTEnumLiteralDeclaration_1.eContents().get(0);
+		private final EnumLiteralDeclaration cSOUTHEnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
+		private final Keyword cSOUTHSouthKeyword_2_0 = (Keyword)cSOUTHEnumLiteralDeclaration_2.eContents().get(0);
+		private final EnumLiteralDeclaration cWESTEnumLiteralDeclaration_3 = (EnumLiteralDeclaration)cAlternatives.eContents().get(3);
+		private final Keyword cWESTWestKeyword_3_0 = (Keyword)cWESTEnumLiteralDeclaration_3.eContents().get(0);
+		
+		//enum Direction:
+		//    NORTH='north' |
+		//    EAST='east' |
+		//    SOUTH='south' |
+		//    WEST='west'
+		//;
+		public EnumRule getRule() { return rule; }
+		
+		//NORTH='north' |
+		//EAST='east' |
+		//SOUTH='south' |
+		//WEST='west'
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//NORTH='north'
+		public EnumLiteralDeclaration getNORTHEnumLiteralDeclaration_0() { return cNORTHEnumLiteralDeclaration_0; }
+		
+		//'north'
+		public Keyword getNORTHNorthKeyword_0_0() { return cNORTHNorthKeyword_0_0; }
+		
+		//EAST='east'
+		public EnumLiteralDeclaration getEASTEnumLiteralDeclaration_1() { return cEASTEnumLiteralDeclaration_1; }
+		
+		//'east'
+		public Keyword getEASTEastKeyword_1_0() { return cEASTEastKeyword_1_0; }
+		
+		//SOUTH='south'
+		public EnumLiteralDeclaration getSOUTHEnumLiteralDeclaration_2() { return cSOUTHEnumLiteralDeclaration_2; }
+		
+		//'south'
+		public Keyword getSOUTHSouthKeyword_2_0() { return cSOUTHSouthKeyword_2_0; }
+		
+		//WEST='west'
+		public EnumLiteralDeclaration getWESTEnumLiteralDeclaration_3() { return cWESTEnumLiteralDeclaration_3; }
+		
+		//'west'
+		public Keyword getWESTWestKeyword_3_0() { return cWESTWestKeyword_3_0; }
+	}
+	public class RuleTypeElements extends AbstractElementFinder.AbstractEnumRuleElementFinder {
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "goldsl.TasksDSL.RuleType");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final EnumLiteralDeclaration cMultiplyEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cMultiplyMultiplyKeyword_0_0 = (Keyword)cMultiplyEnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cStayEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cStayStayKeyword_1_0 = (Keyword)cStayEnumLiteralDeclaration_1.eContents().get(0);
+		private final EnumLiteralDeclaration cDieEnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
+		private final Keyword cDieDieKeyword_2_0 = (Keyword)cDieEnumLiteralDeclaration_2.eContents().get(0);
+		
+		//enum RuleType:
+		//    multiply='multiply' |
+		//    stay='stay' |
+		//    die='die'
+		//;
+		public EnumRule getRule() { return rule; }
+		
+		//multiply='multiply' |
+		//stay='stay' |
+		//die='die'
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//multiply='multiply'
+		public EnumLiteralDeclaration getMultiplyEnumLiteralDeclaration_0() { return cMultiplyEnumLiteralDeclaration_0; }
+		
+		//'multiply'
+		public Keyword getMultiplyMultiplyKeyword_0_0() { return cMultiplyMultiplyKeyword_0_0; }
+		
+		//stay='stay'
+		public EnumLiteralDeclaration getStayEnumLiteralDeclaration_1() { return cStayEnumLiteralDeclaration_1; }
+		
+		//'stay'
+		public Keyword getStayStayKeyword_1_0() { return cStayStayKeyword_1_0; }
+		
+		//die='die'
+		public EnumLiteralDeclaration getDieEnumLiteralDeclaration_2() { return cDieEnumLiteralDeclaration_2; }
+		
+		//'die'
+		public Keyword getDieDieKeyword_2_0() { return cDieDieKeyword_2_0; }
+	}
 	
-	private final ModelElements pModel;
-	private final GreetingElements pGreeting;
+	private final GameoflifeElements pGameoflife;
+	private final CellElements pCell;
+	private final RuleElements pRule;
+	private final DirectionElements eDirection;
+	private final RuleTypeElements eRuleType;
 	
 	private final Grammar grammar;
 	
@@ -77,8 +291,11 @@ public class TasksDSLGrammarAccess extends AbstractElementFinder.AbstractGrammar
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
 		this.gaTerminals = gaTerminals;
-		this.pModel = new ModelElements();
-		this.pGreeting = new GreetingElements();
+		this.pGameoflife = new GameoflifeElements();
+		this.pCell = new CellElements();
+		this.pRule = new RuleElements();
+		this.eDirection = new DirectionElements();
+		this.eRuleType = new RuleTypeElements();
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -108,24 +325,67 @@ public class TasksDSLGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	}
 
 	
-	//Model:
-	//    greetings+=Greeting*;
-	public ModelElements getModelAccess() {
-		return pModel;
+	//Gameoflife:
+	//    cells+=Cell*
+	//    rules+=Rule*
+	//;
+	public GameoflifeElements getGameoflifeAccess() {
+		return pGameoflife;
 	}
 	
-	public ParserRule getModelRule() {
-		return getModelAccess().getRule();
+	public ParserRule getGameoflifeRule() {
+		return getGameoflifeAccess().getRule();
 	}
 	
-	//Greeting:
-	//    'Hello' name=ID '!';
-	public GreetingElements getGreetingAccess() {
-		return pGreeting;
+	//Cell:
+	//    'Cell' x=INT y=INT (no=INT dir=Direction)? |
+	////    'Cells' x=INT y=INT no=INT dir=Direction |
+	//    'Random' no=INT
+	//;
+	public CellElements getCellAccess() {
+		return pCell;
 	}
 	
-	public ParserRule getGreetingRule() {
-		return getGreetingAccess().getRule();
+	public ParserRule getCellRule() {
+		return getCellAccess().getRule();
+	}
+	
+	//Rule:
+	//    'Rule' type=RuleType (sign = '<'|'='|'>') n=INT
+	//;
+	public RuleElements getRuleAccess() {
+		return pRule;
+	}
+	
+	public ParserRule getRuleRule() {
+		return getRuleAccess().getRule();
+	}
+	
+	//enum Direction:
+	//    NORTH='north' |
+	//    EAST='east' |
+	//    SOUTH='south' |
+	//    WEST='west'
+	//;
+	public DirectionElements getDirectionAccess() {
+		return eDirection;
+	}
+	
+	public EnumRule getDirectionRule() {
+		return getDirectionAccess().getRule();
+	}
+	
+	//enum RuleType:
+	//    multiply='multiply' |
+	//    stay='stay' |
+	//    die='die'
+	//;
+	public RuleTypeElements getRuleTypeAccess() {
+		return eRuleType;
+	}
+	
+	public EnumRule getRuleTypeRule() {
+		return getRuleTypeAccess().getRule();
 	}
 	
 	//terminal ID: '^'?('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;

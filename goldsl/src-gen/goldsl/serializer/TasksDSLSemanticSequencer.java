@@ -5,8 +5,9 @@ package goldsl.serializer;
 
 import com.google.inject.Inject;
 import goldsl.services.TasksDSLGrammarAccess;
-import goldsl.tasksDSL.Greeting;
-import goldsl.tasksDSL.Model;
+import goldsl.tasksDSL.Cell;
+import goldsl.tasksDSL.Gameoflife;
+import goldsl.tasksDSL.Rule;
 import goldsl.tasksDSL.TasksDSLPackage;
 import java.util.Set;
 import org.eclipse.emf.ecore.EObject;
@@ -15,9 +16,7 @@ import org.eclipse.xtext.Action;
 import org.eclipse.xtext.Parameter;
 import org.eclipse.xtext.ParserRule;
 import org.eclipse.xtext.serializer.ISerializationContext;
-import org.eclipse.xtext.serializer.acceptor.SequenceFeeder;
 import org.eclipse.xtext.serializer.sequencer.AbstractDelegatingSemanticSequencer;
-import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
 
 @SuppressWarnings("all")
 public class TasksDSLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
@@ -33,11 +32,14 @@ public class TasksDSLSemanticSequencer extends AbstractDelegatingSemanticSequenc
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
 		if (epackage == TasksDSLPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
-			case TasksDSLPackage.GREETING:
-				sequence_Greeting(context, (Greeting) semanticObject); 
+			case TasksDSLPackage.CELL:
+				sequence_Cell(context, (Cell) semanticObject); 
 				return; 
-			case TasksDSLPackage.MODEL:
-				sequence_Model(context, (Model) semanticObject); 
+			case TasksDSLPackage.GAMEOFLIFE:
+				sequence_Gameoflife(context, (Gameoflife) semanticObject); 
+				return; 
+			case TasksDSLPackage.RULE:
+				sequence_Rule(context, (Rule) semanticObject); 
 				return; 
 			}
 		if (errorAcceptor != null)
@@ -47,33 +49,41 @@ public class TasksDSLSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     Greeting returns Greeting
+	 *     Cell returns Cell
 	 *
 	 * Constraint:
-	 *     name=ID
+	 *     ((x=INT y=INT (no=INT dir=Direction)?) | no=INT)
 	 * </pre>
 	 */
-	protected void sequence_Greeting(ISerializationContext context, Greeting semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, TasksDSLPackage.Literals.GREETING__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TasksDSLPackage.Literals.GREETING__NAME));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getGreetingAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.finish();
+	protected void sequence_Cell(ISerializationContext context, Cell semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     Model returns Model
+	 *     Gameoflife returns Gameoflife
 	 *
 	 * Constraint:
-	 *     greetings+=Greeting+
+	 *     ((cells+=Cell+ rules+=Rule+) | rules+=Rule+)?
 	 * </pre>
 	 */
-	protected void sequence_Model(ISerializationContext context, Model semanticObject) {
+	protected void sequence_Gameoflife(ISerializationContext context, Gameoflife semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     Rule returns Rule
+	 *
+	 * Constraint:
+	 *     (type=RuleType sign='&lt;'? n=INT)
+	 * </pre>
+	 */
+	protected void sequence_Rule(ISerializationContext context, Rule semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

@@ -6,11 +6,31 @@
     copyrightFields="false" runtimeVersion="2.20">
   <genPackages prefix="TasksDSL" basePackage="goldsl" disposableProviderFactory="true"
       fileExtensions="tdsl" ecorePackage="TasksDSL.ecore#/">
-    <genClasses ecoreClass="TasksDSL.ecore#//Model">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TasksDSL.ecore#//Model/greetings"/>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="TasksDSL.ecore#//Direction">
+      <genEnumLiterals ecoreEnumLiteral="TasksDSL.ecore#//Direction/NORTH"/>
+      <genEnumLiterals ecoreEnumLiteral="TasksDSL.ecore#//Direction/EAST"/>
+      <genEnumLiterals ecoreEnumLiteral="TasksDSL.ecore#//Direction/SOUTH"/>
+      <genEnumLiterals ecoreEnumLiteral="TasksDSL.ecore#//Direction/WEST"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="TasksDSL.ecore#//RuleType">
+      <genEnumLiterals ecoreEnumLiteral="TasksDSL.ecore#//RuleType/multiply"/>
+      <genEnumLiterals ecoreEnumLiteral="TasksDSL.ecore#//RuleType/stay"/>
+      <genEnumLiterals ecoreEnumLiteral="TasksDSL.ecore#//RuleType/die"/>
+    </genEnums>
+    <genClasses ecoreClass="TasksDSL.ecore#//Gameoflife">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TasksDSL.ecore#//Gameoflife/cells"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TasksDSL.ecore#//Gameoflife/rules"/>
     </genClasses>
-    <genClasses ecoreClass="TasksDSL.ecore#//Greeting">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TasksDSL.ecore#//Greeting/name"/>
+    <genClasses ecoreClass="TasksDSL.ecore#//Cell">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TasksDSL.ecore#//Cell/x"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TasksDSL.ecore#//Cell/y"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TasksDSL.ecore#//Cell/no"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TasksDSL.ecore#//Cell/dir"/>
+    </genClasses>
+    <genClasses ecoreClass="TasksDSL.ecore#//Rule">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TasksDSL.ecore#//Rule/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TasksDSL.ecore#//Rule/sign"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TasksDSL.ecore#//Rule/n"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

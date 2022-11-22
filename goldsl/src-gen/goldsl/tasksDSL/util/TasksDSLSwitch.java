@@ -73,17 +73,24 @@ public class TasksDSLSwitch<T> extends Switch<T>
   {
     switch (classifierID)
     {
-      case TasksDSLPackage.MODEL:
+      case TasksDSLPackage.GAMEOFLIFE:
       {
-        Model model = (Model)theEObject;
-        T result = caseModel(model);
+        Gameoflife gameoflife = (Gameoflife)theEObject;
+        T result = caseGameoflife(gameoflife);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case TasksDSLPackage.GREETING:
+      case TasksDSLPackage.CELL:
       {
-        Greeting greeting = (Greeting)theEObject;
-        T result = caseGreeting(greeting);
+        Cell cell = (Cell)theEObject;
+        T result = caseCell(cell);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case TasksDSLPackage.RULE:
+      {
+        Rule rule = (Rule)theEObject;
+        T result = caseRule(rule);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -92,33 +99,49 @@ public class TasksDSLSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Model</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Gameoflife</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Model</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Gameoflife</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseModel(Model object)
+  public T caseGameoflife(Gameoflife object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Greeting</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Cell</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Greeting</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Cell</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseGreeting(Greeting object)
+  public T caseCell(Cell object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Rule</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Rule</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseRule(Rule object)
   {
     return null;
   }

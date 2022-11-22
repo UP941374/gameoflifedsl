@@ -1,0 +1,15 @@
+grammar goldsl.TasksDSL with org.eclipse.xtext.common.Terminals
+
+generate tasksDSL "http://www.TasksDSL.goldsl"
+
+Gameoflife:
+	cells+=Cell*
+;
+
+	
+Cell:
+	'cellS' x=INT y=INT
+	'cellC' x=INT y=INT no=INT
+	'cellR' x=INT y=INT no=INT
+;
+

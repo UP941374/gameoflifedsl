@@ -3,13 +3,17 @@
  */
 package goldsl.tasksDSL.impl;
 
-import goldsl.tasksDSL.Greeting;
-import goldsl.tasksDSL.Model;
+import goldsl.tasksDSL.Cell;
+import goldsl.tasksDSL.Direction;
+import goldsl.tasksDSL.Gameoflife;
+import goldsl.tasksDSL.Rule;
+import goldsl.tasksDSL.RuleType;
 import goldsl.tasksDSL.TasksDSLFactory;
 import goldsl.tasksDSL.TasksDSLPackage;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -28,14 +32,35 @@ public class TasksDSLPackageImpl extends EPackageImpl implements TasksDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass modelEClass = null;
+  private EClass gameoflifeEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass greetingEClass = null;
+  private EClass cellEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass ruleEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum directionEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum ruleTypeEEnum = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -105,9 +130,9 @@ public class TasksDSLPackageImpl extends EPackageImpl implements TasksDSLPackage
    * @generated
    */
   @Override
-  public EClass getModel()
+  public EClass getGameoflife()
   {
-    return modelEClass;
+    return gameoflifeEClass;
   }
 
   /**
@@ -116,9 +141,9 @@ public class TasksDSLPackageImpl extends EPackageImpl implements TasksDSLPackage
    * @generated
    */
   @Override
-  public EReference getModel_Greetings()
+  public EReference getGameoflife_Cells()
   {
-    return (EReference)modelEClass.getEStructuralFeatures().get(0);
+    return (EReference)gameoflifeEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -127,9 +152,9 @@ public class TasksDSLPackageImpl extends EPackageImpl implements TasksDSLPackage
    * @generated
    */
   @Override
-  public EClass getGreeting()
+  public EReference getGameoflife_Rules()
   {
-    return greetingEClass;
+    return (EReference)gameoflifeEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -138,9 +163,119 @@ public class TasksDSLPackageImpl extends EPackageImpl implements TasksDSLPackage
    * @generated
    */
   @Override
-  public EAttribute getGreeting_Name()
+  public EClass getCell()
   {
-    return (EAttribute)greetingEClass.getEStructuralFeatures().get(0);
+    return cellEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getCell_X()
+  {
+    return (EAttribute)cellEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getCell_Y()
+  {
+    return (EAttribute)cellEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getCell_No()
+  {
+    return (EAttribute)cellEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getCell_Dir()
+  {
+    return (EAttribute)cellEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getRule()
+  {
+    return ruleEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getRule_Type()
+  {
+    return (EAttribute)ruleEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getRule_Sign()
+  {
+    return (EAttribute)ruleEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getRule_N()
+  {
+    return (EAttribute)ruleEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EEnum getDirection()
+  {
+    return directionEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EEnum getRuleType()
+  {
+    return ruleTypeEEnum;
   }
 
   /**
@@ -174,11 +309,24 @@ public class TasksDSLPackageImpl extends EPackageImpl implements TasksDSLPackage
     isCreated = true;
 
     // Create classes and their features
-    modelEClass = createEClass(MODEL);
-    createEReference(modelEClass, MODEL__GREETINGS);
+    gameoflifeEClass = createEClass(GAMEOFLIFE);
+    createEReference(gameoflifeEClass, GAMEOFLIFE__CELLS);
+    createEReference(gameoflifeEClass, GAMEOFLIFE__RULES);
 
-    greetingEClass = createEClass(GREETING);
-    createEAttribute(greetingEClass, GREETING__NAME);
+    cellEClass = createEClass(CELL);
+    createEAttribute(cellEClass, CELL__X);
+    createEAttribute(cellEClass, CELL__Y);
+    createEAttribute(cellEClass, CELL__NO);
+    createEAttribute(cellEClass, CELL__DIR);
+
+    ruleEClass = createEClass(RULE);
+    createEAttribute(ruleEClass, RULE__TYPE);
+    createEAttribute(ruleEClass, RULE__SIGN);
+    createEAttribute(ruleEClass, RULE__N);
+
+    // Create enums
+    directionEEnum = createEEnum(DIRECTION);
+    ruleTypeEEnum = createEEnum(RULE_TYPE);
   }
 
   /**
@@ -212,11 +360,32 @@ public class TasksDSLPackageImpl extends EPackageImpl implements TasksDSLPackage
     // Add supertypes to classes
 
     // Initialize classes and features; add operations and parameters
-    initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getModel_Greetings(), this.getGreeting(), null, "greetings", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(gameoflifeEClass, Gameoflife.class, "Gameoflife", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getGameoflife_Cells(), this.getCell(), null, "cells", null, 0, -1, Gameoflife.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getGameoflife_Rules(), this.getRule(), null, "rules", null, 0, -1, Gameoflife.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(greetingEClass, Greeting.class, "Greeting", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getGreeting_Name(), ecorePackage.getEString(), "name", null, 0, 1, Greeting.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(cellEClass, Cell.class, "Cell", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getCell_X(), ecorePackage.getEInt(), "x", null, 0, 1, Cell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getCell_Y(), ecorePackage.getEInt(), "y", null, 0, 1, Cell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getCell_No(), ecorePackage.getEInt(), "no", null, 0, 1, Cell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getCell_Dir(), this.getDirection(), "dir", null, 0, 1, Cell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(ruleEClass, Rule.class, "Rule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getRule_Type(), this.getRuleType(), "type", null, 0, 1, Rule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getRule_Sign(), ecorePackage.getEString(), "sign", null, 0, 1, Rule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getRule_N(), ecorePackage.getEInt(), "n", null, 0, 1, Rule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    // Initialize enums and add enum literals
+    initEEnum(directionEEnum, Direction.class, "Direction");
+    addEEnumLiteral(directionEEnum, Direction.NORTH);
+    addEEnumLiteral(directionEEnum, Direction.EAST);
+    addEEnumLiteral(directionEEnum, Direction.SOUTH);
+    addEEnumLiteral(directionEEnum, Direction.WEST);
+
+    initEEnum(ruleTypeEEnum, RuleType.class, "RuleType");
+    addEEnumLiteral(ruleTypeEEnum, RuleType.MULTIPLY);
+    addEEnumLiteral(ruleTypeEEnum, RuleType.STAY);
+    addEEnumLiteral(ruleTypeEEnum, RuleType.DIE);
 
     // Create resource
     createResource(eNS_URI);

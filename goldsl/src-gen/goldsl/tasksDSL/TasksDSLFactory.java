@@ -24,22 +24,31 @@ public interface TasksDSLFactory extends EFactory
   TasksDSLFactory eINSTANCE = goldsl.tasksDSL.impl.TasksDSLFactoryImpl.init();
 
   /**
-   * Returns a new object of class '<em>Model</em>'.
+   * Returns a new object of class '<em>Gameoflife</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Model</em>'.
+   * @return a new object of class '<em>Gameoflife</em>'.
    * @generated
    */
-  Model createModel();
+  Gameoflife createGameoflife();
 
   /**
-   * Returns a new object of class '<em>Greeting</em>'.
+   * Returns a new object of class '<em>Cell</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Greeting</em>'.
+   * @return a new object of class '<em>Cell</em>'.
    * @generated
    */
-  Greeting createGreeting();
+  Cell createCell();
+
+  /**
+   * Returns a new object of class '<em>Rule</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Rule</em>'.
+   * @generated
+   */
+  Rule createRule();
 
   /**
    * Returns the package supported by this factory.

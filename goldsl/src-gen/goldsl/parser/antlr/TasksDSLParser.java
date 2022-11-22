@@ -27,7 +27,7 @@ public class TasksDSLParser extends AbstractAntlrParser {
 
 	@Override 
 	protected String getDefaultRuleName() {
-		return "Model";
+		return "Gameoflife";
 	}
 
 	public TasksDSLGrammarAccess getGrammarAccess() {

@@ -1,0 +1,32 @@
+grammar goldsl.TasksDSL with org.eclipse.xtext.common.Terminals
+
+generate tasksDSL "http://www.TasksDSL.goldsl"
+
+Gameoflife:
+	cells+=Cell* 
+	rules+=Rule*
+;
+
+	
+Cell:
+	'Cell' x=INT y=INT (no=INT dir=Direction)? |
+//	'Cells' x=INT y=INT no=INT dir=Direction | 
+	'Random' no=INT
+;
+
+Rule:
+	'Rule' type=RuleType (sign = '<'|'='|'>') n=INT
+;
+
+enum Direction:
+	NORTH='North' |
+	EAST='East' |
+	SOUTH='South' |
+	WEST='West'
+;
+
+enum RuleType:
+	MULTIPLY='Multiply' |
+	STAY='Stay' |
+	DIE='Die' 
+;
