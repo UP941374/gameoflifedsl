@@ -1,0 +1,9 @@
+grammar goldsl.TasksDSL with org.eclipse.xtext.common.Terminals
+
+generate tasksDSL "http://www.TasksDSL.goldsl"
+
+Model:
+	greetings+=Greeting*;
+	
+Greeting:
+	'Hello' name=ID '!';

@@ -1,0 +1,10 @@
+INDEX VERSION 1.131+C:\Users\auser\Desktop\GameOfLifeDSL\.metadata\.plugins\org.eclipse.jdt.core
+162705346.index
+3480938525.index
+3405342199.index
+1384991094.index
+1865797976.index
+896521750.index
+1323025600.index
+2085130704.index
+3148448900.index
