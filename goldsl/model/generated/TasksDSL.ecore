@@ -1,21 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="tasksDSL" nsURI="http://www.TasksDSL.goldsl" nsPrefix="tasksDSL">
-  <eClassifiers xsi:type="ecore:EClass" name="Gameoflife">
+  <eClassifiers xsi:type="ecore:EClass" name="GameOfLife">
     <eStructuralFeatures xsi:type="ecore:EReference" name="cells" upperBound="-1"
         eType="#//Cell" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="rules" upperBound="-1"
         eType="#//Rule" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Cell">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nCells" upperBound="-1"
+        eType="#//NormalCell" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fillCells" upperBound="-1"
+        eType="#//FillCell" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NormalCell">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="x" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="y" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="no" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FillCell">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="x" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="y" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="repAmount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="dir" eType="#//Direction"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Rule">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//RuleType"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sign" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sign" eType="#//CompareSign"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="n" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="Direction">
@@ -25,8 +35,13 @@
     <eLiterals name="WEST" value="3" literal="west"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="RuleType">
-    <eLiterals name="multiply" literal="multiply"/>
-    <eLiterals name="stay" value="1" literal="stay"/>
-    <eLiterals name="die" value="2" literal="die"/>
+    <eLiterals name="MULTIPLY" literal="multiply"/>
+    <eLiterals name="STAY" value="1" literal="stay"/>
+    <eLiterals name="DIE" value="2" literal="die"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="CompareSign">
+    <eLiterals name="BIGGER_THAN" literal=">"/>
+    <eLiterals name="EQUAL" value="1" literal="="/>
+    <eLiterals name="SMALLER_THAN" value="2" literal="&lt;"/>
   </eClassifiers>
 </ecore:EPackage>

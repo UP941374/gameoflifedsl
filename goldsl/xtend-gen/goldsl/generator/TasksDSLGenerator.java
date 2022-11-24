@@ -3,10 +3,13 @@
  */
 package goldsl.generator;
 
+import goldsl.tasksDSL.GameOfLife;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
+import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 
 /**
  * Generates code from your model files on save.
@@ -17,5 +20,11 @@ import org.eclipse.xtext.generator.IGeneratorContext;
 public class TasksDSLGenerator extends AbstractGenerator {
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
+    EObject _head = IteratorExtensions.<EObject>head(resource.getAllContents());
+    final GameOfLife root = ((GameOfLife) _head);
+    if ((root != null)) {
+      String path = "../src/GameOfLife/";
+      fsa.generateFile((path + "RulesOfLife.java"), JavaGenerator.toJava(root));
+    }
   }
 }

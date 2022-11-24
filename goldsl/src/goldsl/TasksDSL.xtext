@@ -2,32 +2,80 @@ grammar goldsl.TasksDSL with org.eclipse.xtext.common.Terminals
 
 generate tasksDSL "http://www.TasksDSL.goldsl"
 
-Gameoflife:
-	cells+=Cell* 
-	rules+=Rule*
+//Gameoflife:
+//	cells+=Cell* 
+//	rules+=Rule*
+//;
+//
+//	
+//Cell:
+//	'Cell' x=INT y=INT |
+//	'Cells' x=INT y=INT no=INT dir=INT direction=Direction | 
+//	'Fill' x1=INT y1=INT x2=INT y2=INT |
+//	'Random' no=INT
+//;
+
+//Gameoflife:
+//	cells += Cell*
+//	multiCells += Cells*
+//	fillCells += FillCell*
+//	rules += Rule*	
+//;
+//
+//	
+//Cell:
+////	"(" x=INT y=INT ((no=INT dir=Direction) | (x2=INT y2=INT))? ")"
+//	'Cell' x=INT y=INT 
+//;
+//
+//Cells:
+//	'Cells' x=INT y=INT no=INT dir=Direction
+//;
+//
+//FillCell: 
+//	'Fill' x1=INT y1=INT x2=INT y2=INT
+//;
+//
+//Rule:
+//	'Rule' type=RuleType sign=CompareSign  n=INT
+//;
+
+GameOfLife:
+	("Cells" cells+=Cell+)?
+	rules += Rule*
 ;
 
-	
 Cell:
-	'Cell' x=INT y=INT |
-	'Cells' x=INT y=INT no=INT dir=Direction | 
-	'Fill' x1=INT y1=INT x2=INT y2=INT |
-	'Random' no=INT
+	'['(nCells+=NormalCell | 'fillCell:' (fillCells+=FillCell))* ']'
+;
+
+NormalCell:
+	'(' x=INT ',' y=INT ')'
+;
+
+FillCell:
+	'(' x=INT ',' y=INT ',' repAmount=INT ',' dir=Direction ')'
 ;
 
 Rule:
-	'Rule' type=RuleType (sign = '<'|'='|'>') n=INT
+	'Rule' type=RuleType sign=CompareSign  n=INT
 ;
 
 enum Direction:
-	NORTH='North' |
-	EAST='East' |
-	SOUTH='South' |
-	WEST='West'
+	NORTH = 'north' |
+	EAST = 'east' |
+	SOUTH = 'south' |
+	WEST = 'west'
 ;
 
 enum RuleType:
-	MULTIPLY='Multiply' |
-	STAY='Stay' |
-	DIE='Die' 
+	MULTIPLY = 'multiply' |
+	STAY = 'stay' |
+	DIE = 'die' 
+;
+
+enum CompareSign:
+	BIGGER_THAN = '>' |
+	EQUAL = '=' |
+	SMALLER_THAN = '<' 
 ;

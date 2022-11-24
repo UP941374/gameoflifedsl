@@ -52,25 +52,28 @@ public interface Rule extends EObject
 
   /**
    * Returns the value of the '<em><b>Sign</b></em>' attribute.
+   * The literals are from the enumeration {@link goldsl.tasksDSL.CompareSign}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Sign</em>' attribute.
-   * @see #setSign(String)
+   * @see goldsl.tasksDSL.CompareSign
+   * @see #setSign(CompareSign)
    * @see goldsl.tasksDSL.TasksDSLPackage#getRule_Sign()
    * @model
    * @generated
    */
-  String getSign();
+  CompareSign getSign();
 
   /**
    * Sets the value of the '{@link goldsl.tasksDSL.Rule#getSign <em>Sign</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Sign</em>' attribute.
+   * @see goldsl.tasksDSL.CompareSign
    * @see #getSign()
    * @generated
    */
-  void setSign(String value);
+  void setSign(CompareSign value);
 
   /**
    * Returns the value of the '<em><b>N</b></em>' attribute.

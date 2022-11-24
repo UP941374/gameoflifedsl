@@ -76,14 +76,24 @@ public class TasksDSLAdapterFactory extends AdapterFactoryImpl
     new TasksDSLSwitch<Adapter>()
     {
       @Override
-      public Adapter caseGameoflife(Gameoflife object)
+      public Adapter caseGameOfLife(GameOfLife object)
       {
-        return createGameoflifeAdapter();
+        return createGameOfLifeAdapter();
       }
       @Override
       public Adapter caseCell(Cell object)
       {
         return createCellAdapter();
+      }
+      @Override
+      public Adapter caseNormalCell(NormalCell object)
+      {
+        return createNormalCellAdapter();
+      }
+      @Override
+      public Adapter caseFillCell(FillCell object)
+      {
+        return createFillCellAdapter();
       }
       @Override
       public Adapter caseRule(Rule object)
@@ -113,16 +123,16 @@ public class TasksDSLAdapterFactory extends AdapterFactoryImpl
 
 
   /**
-   * Creates a new adapter for an object of class '{@link goldsl.tasksDSL.Gameoflife <em>Gameoflife</em>}'.
+   * Creates a new adapter for an object of class '{@link goldsl.tasksDSL.GameOfLife <em>Game Of Life</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see goldsl.tasksDSL.Gameoflife
+   * @see goldsl.tasksDSL.GameOfLife
    * @generated
    */
-  public Adapter createGameoflifeAdapter()
+  public Adapter createGameOfLifeAdapter()
   {
     return null;
   }
@@ -138,6 +148,36 @@ public class TasksDSLAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createCellAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link goldsl.tasksDSL.NormalCell <em>Normal Cell</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see goldsl.tasksDSL.NormalCell
+   * @generated
+   */
+  public Adapter createNormalCellAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link goldsl.tasksDSL.FillCell <em>Fill Cell</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see goldsl.tasksDSL.FillCell
+   * @generated
+   */
+  public Adapter createFillCellAdapter()
   {
     return null;
   }

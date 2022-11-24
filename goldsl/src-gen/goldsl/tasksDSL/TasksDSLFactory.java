@@ -24,13 +24,13 @@ public interface TasksDSLFactory extends EFactory
   TasksDSLFactory eINSTANCE = goldsl.tasksDSL.impl.TasksDSLFactoryImpl.init();
 
   /**
-   * Returns a new object of class '<em>Gameoflife</em>'.
+   * Returns a new object of class '<em>Game Of Life</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Gameoflife</em>'.
+   * @return a new object of class '<em>Game Of Life</em>'.
    * @generated
    */
-  Gameoflife createGameoflife();
+  GameOfLife createGameOfLife();
 
   /**
    * Returns a new object of class '<em>Cell</em>'.
@@ -40,6 +40,24 @@ public interface TasksDSLFactory extends EFactory
    * @generated
    */
   Cell createCell();
+
+  /**
+   * Returns a new object of class '<em>Normal Cell</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Normal Cell</em>'.
+   * @generated
+   */
+  NormalCell createNormalCell();
+
+  /**
+   * Returns a new object of class '<em>Fill Cell</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Fill Cell</em>'.
+   * @generated
+   */
+  FillCell createFillCell();
 
   /**
    * Returns a new object of class '<em>Rule</em>'.

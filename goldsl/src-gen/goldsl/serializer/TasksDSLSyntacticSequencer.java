@@ -11,9 +11,6 @@ import org.eclipse.xtext.IGrammarAccess;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.serializer.analysis.GrammarAlias.AbstractElementAlias;
-import org.eclipse.xtext.serializer.analysis.GrammarAlias.AlternativeAlias;
-import org.eclipse.xtext.serializer.analysis.GrammarAlias.TokenAlias;
-import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynNavigable;
 import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynTransition;
 import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 
@@ -21,12 +18,10 @@ import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 public class TasksDSLSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected TasksDSLGrammarAccess grammarAccess;
-	protected AbstractElementAlias match_Rule_EqualsSignKeyword_2_1_or_GreaterThanSignKeyword_2_2;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (TasksDSLGrammarAccess) access;
-		match_Rule_EqualsSignKeyword_2_1_or_GreaterThanSignKeyword_2_2 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getRuleAccess().getEqualsSignKeyword_2_1()), new TokenAlias(false, false, grammarAccess.getRuleAccess().getGreaterThanSignKeyword_2_2()));
 	}
 	
 	@Override
@@ -41,24 +36,8 @@ public class TasksDSLSyntacticSequencer extends AbstractSyntacticSequencer {
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if (match_Rule_EqualsSignKeyword_2_1_or_GreaterThanSignKeyword_2_2.equals(syntax))
-				emit_Rule_EqualsSignKeyword_2_1_or_GreaterThanSignKeyword_2_2(semanticObject, getLastNavigableState(), syntaxNodes);
-			else acceptNodes(getLastNavigableState(), syntaxNodes);
+			acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
 
-	/**
-	 * <pre>
-	 * Ambiguous syntax:
-	 *     '=' | '&gt;'
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     type=RuleType (ambiguity) n=INT
-	 
-	 * </pre>
-	 */
-	protected void emit_Rule_EqualsSignKeyword_2_1_or_GreaterThanSignKeyword_2_2(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
 }

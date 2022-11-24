@@ -13,19 +13,32 @@
       <genEnumLiterals ecoreEnumLiteral="TasksDSL.ecore#//Direction/WEST"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="TasksDSL.ecore#//RuleType">
-      <genEnumLiterals ecoreEnumLiteral="TasksDSL.ecore#//RuleType/multiply"/>
-      <genEnumLiterals ecoreEnumLiteral="TasksDSL.ecore#//RuleType/stay"/>
-      <genEnumLiterals ecoreEnumLiteral="TasksDSL.ecore#//RuleType/die"/>
+      <genEnumLiterals ecoreEnumLiteral="TasksDSL.ecore#//RuleType/MULTIPLY"/>
+      <genEnumLiterals ecoreEnumLiteral="TasksDSL.ecore#//RuleType/STAY"/>
+      <genEnumLiterals ecoreEnumLiteral="TasksDSL.ecore#//RuleType/DIE"/>
     </genEnums>
-    <genClasses ecoreClass="TasksDSL.ecore#//Gameoflife">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TasksDSL.ecore#//Gameoflife/cells"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TasksDSL.ecore#//Gameoflife/rules"/>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="TasksDSL.ecore#//CompareSign">
+      <genEnumLiterals ecoreEnumLiteral="TasksDSL.ecore#//CompareSign/BIGGER_THAN"/>
+      <genEnumLiterals ecoreEnumLiteral="TasksDSL.ecore#//CompareSign/EQUAL"/>
+      <genEnumLiterals ecoreEnumLiteral="TasksDSL.ecore#//CompareSign/SMALLER_THAN"/>
+    </genEnums>
+    <genClasses ecoreClass="TasksDSL.ecore#//GameOfLife">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TasksDSL.ecore#//GameOfLife/cells"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TasksDSL.ecore#//GameOfLife/rules"/>
     </genClasses>
     <genClasses ecoreClass="TasksDSL.ecore#//Cell">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TasksDSL.ecore#//Cell/x"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TasksDSL.ecore#//Cell/y"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TasksDSL.ecore#//Cell/no"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TasksDSL.ecore#//Cell/dir"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TasksDSL.ecore#//Cell/nCells"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TasksDSL.ecore#//Cell/fillCells"/>
+    </genClasses>
+    <genClasses ecoreClass="TasksDSL.ecore#//NormalCell">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TasksDSL.ecore#//NormalCell/x"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TasksDSL.ecore#//NormalCell/y"/>
+    </genClasses>
+    <genClasses ecoreClass="TasksDSL.ecore#//FillCell">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TasksDSL.ecore#//FillCell/x"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TasksDSL.ecore#//FillCell/y"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TasksDSL.ecore#//FillCell/repAmount"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TasksDSL.ecore#//FillCell/dir"/>
     </genClasses>
     <genClasses ecoreClass="TasksDSL.ecore#//Rule">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TasksDSL.ecore#//Rule/type"/>

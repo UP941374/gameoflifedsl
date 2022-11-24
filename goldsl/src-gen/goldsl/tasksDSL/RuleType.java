@@ -21,63 +21,63 @@ import org.eclipse.emf.common.util.Enumerator;
 public enum RuleType implements Enumerator
 {
   /**
-   * The '<em><b>Multiply</b></em>' literal object.
+   * The '<em><b>MULTIPLY</b></em>' literal object.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #MULTIPLY_VALUE
    * @generated
    * @ordered
    */
-  MULTIPLY(0, "multiply", "multiply"),
+  MULTIPLY(0, "MULTIPLY", "multiply"),
 
   /**
-   * The '<em><b>Stay</b></em>' literal object.
+   * The '<em><b>STAY</b></em>' literal object.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #STAY_VALUE
    * @generated
    * @ordered
    */
-  STAY(1, "stay", "stay"),
+  STAY(1, "STAY", "stay"),
 
   /**
-   * The '<em><b>Die</b></em>' literal object.
+   * The '<em><b>DIE</b></em>' literal object.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #DIE_VALUE
    * @generated
    * @ordered
    */
-  DIE(2, "die", "die");
+  DIE(2, "DIE", "die");
 
   /**
-   * The '<em><b>Multiply</b></em>' literal value.
+   * The '<em><b>MULTIPLY</b></em>' literal value.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #MULTIPLY
-   * @model name="multiply"
+   * @model literal="multiply"
    * @generated
    * @ordered
    */
   public static final int MULTIPLY_VALUE = 0;
 
   /**
-   * The '<em><b>Stay</b></em>' literal value.
+   * The '<em><b>STAY</b></em>' literal value.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #STAY
-   * @model name="stay"
+   * @model literal="stay"
    * @generated
    * @ordered
    */
   public static final int STAY_VALUE = 1;
 
   /**
-   * The '<em><b>Die</b></em>' literal value.
+   * The '<em><b>DIE</b></em>' literal value.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #DIE
-   * @model name="die"
+   * @model literal="die"
    * @generated
    * @ordered
    */

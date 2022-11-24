@@ -3,6 +3,7 @@
  */
 package goldsl.generator
 
+import goldsl.tasksDSL.GameOfLife
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
@@ -21,5 +22,11 @@ class TasksDSLGenerator extends AbstractGenerator {
 //				.filter(Greeting)
 //				.map[name]
 //				.join(', '))
+		val root = resource.allContents.head as GameOfLife;
+		if (root !== null) {
+			var path = "../src/GameOfLife/";
+//			JavaGenerator.toJava(root);
+			fsa.generateFile(path+"RulesOfLife.java", JavaGenerator.toJava(root))
+		}
 	}
 }

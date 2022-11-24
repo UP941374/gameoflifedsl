@@ -73,10 +73,10 @@ public class TasksDSLSwitch<T> extends Switch<T>
   {
     switch (classifierID)
     {
-      case TasksDSLPackage.GAMEOFLIFE:
+      case TasksDSLPackage.GAME_OF_LIFE:
       {
-        Gameoflife gameoflife = (Gameoflife)theEObject;
-        T result = caseGameoflife(gameoflife);
+        GameOfLife gameOfLife = (GameOfLife)theEObject;
+        T result = caseGameOfLife(gameOfLife);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -84,6 +84,20 @@ public class TasksDSLSwitch<T> extends Switch<T>
       {
         Cell cell = (Cell)theEObject;
         T result = caseCell(cell);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case TasksDSLPackage.NORMAL_CELL:
+      {
+        NormalCell normalCell = (NormalCell)theEObject;
+        T result = caseNormalCell(normalCell);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case TasksDSLPackage.FILL_CELL:
+      {
+        FillCell fillCell = (FillCell)theEObject;
+        T result = caseFillCell(fillCell);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -99,17 +113,17 @@ public class TasksDSLSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Gameoflife</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Game Of Life</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Gameoflife</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Game Of Life</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseGameoflife(Gameoflife object)
+  public T caseGameOfLife(GameOfLife object)
   {
     return null;
   }
@@ -126,6 +140,38 @@ public class TasksDSLSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseCell(Cell object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Normal Cell</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Normal Cell</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseNormalCell(NormalCell object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Fill Cell</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Fill Cell</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseFillCell(FillCell object)
   {
     return null;
   }

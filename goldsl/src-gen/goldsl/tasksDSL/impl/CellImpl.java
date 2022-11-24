@@ -4,15 +4,23 @@
 package goldsl.tasksDSL.impl;
 
 import goldsl.tasksDSL.Cell;
-import goldsl.tasksDSL.Direction;
+import goldsl.tasksDSL.FillCell;
+import goldsl.tasksDSL.NormalCell;
 import goldsl.tasksDSL.TasksDSLPackage;
 
-import org.eclipse.emf.common.notify.Notification;
+import java.util.Collection;
+
+import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -22,10 +30,8 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link goldsl.tasksDSL.impl.CellImpl#getX <em>X</em>}</li>
- *   <li>{@link goldsl.tasksDSL.impl.CellImpl#getY <em>Y</em>}</li>
- *   <li>{@link goldsl.tasksDSL.impl.CellImpl#getNo <em>No</em>}</li>
- *   <li>{@link goldsl.tasksDSL.impl.CellImpl#getDir <em>Dir</em>}</li>
+ *   <li>{@link goldsl.tasksDSL.impl.CellImpl#getNCells <em>NCells</em>}</li>
+ *   <li>{@link goldsl.tasksDSL.impl.CellImpl#getFillCells <em>Fill Cells</em>}</li>
  * </ul>
  *
  * @generated
@@ -33,84 +39,24 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 public class CellImpl extends MinimalEObjectImpl.Container implements Cell
 {
   /**
-   * The default value of the '{@link #getX() <em>X</em>}' attribute.
+   * The cached value of the '{@link #getNCells() <em>NCells</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getX()
+   * @see #getNCells()
    * @generated
    * @ordered
    */
-  protected static final int X_EDEFAULT = 0;
+  protected EList<NormalCell> nCells;
 
   /**
-   * The cached value of the '{@link #getX() <em>X</em>}' attribute.
+   * The cached value of the '{@link #getFillCells() <em>Fill Cells</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getX()
+   * @see #getFillCells()
    * @generated
    * @ordered
    */
-  protected int x = X_EDEFAULT;
-
-  /**
-   * The default value of the '{@link #getY() <em>Y</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getY()
-   * @generated
-   * @ordered
-   */
-  protected static final int Y_EDEFAULT = 0;
-
-  /**
-   * The cached value of the '{@link #getY() <em>Y</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getY()
-   * @generated
-   * @ordered
-   */
-  protected int y = Y_EDEFAULT;
-
-  /**
-   * The default value of the '{@link #getNo() <em>No</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getNo()
-   * @generated
-   * @ordered
-   */
-  protected static final int NO_EDEFAULT = 0;
-
-  /**
-   * The cached value of the '{@link #getNo() <em>No</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getNo()
-   * @generated
-   * @ordered
-   */
-  protected int no = NO_EDEFAULT;
-
-  /**
-   * The default value of the '{@link #getDir() <em>Dir</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getDir()
-   * @generated
-   * @ordered
-   */
-  protected static final Direction DIR_EDEFAULT = Direction.NORTH;
-
-  /**
-   * The cached value of the '{@link #getDir() <em>Dir</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getDir()
-   * @generated
-   * @ordered
-   */
-  protected Direction dir = DIR_EDEFAULT;
+  protected EList<FillCell> fillCells;
 
   /**
    * <!-- begin-user-doc -->
@@ -139,9 +85,13 @@ public class CellImpl extends MinimalEObjectImpl.Container implements Cell
    * @generated
    */
   @Override
-  public int getX()
+  public EList<NormalCell> getNCells()
   {
-    return x;
+    if (nCells == null)
+    {
+      nCells = new EObjectContainmentEList<NormalCell>(NormalCell.class, this, TasksDSLPackage.CELL__NCELLS);
+    }
+    return nCells;
   }
 
   /**
@@ -150,12 +100,13 @@ public class CellImpl extends MinimalEObjectImpl.Container implements Cell
    * @generated
    */
   @Override
-  public void setX(int newX)
+  public EList<FillCell> getFillCells()
   {
-    int oldX = x;
-    x = newX;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, TasksDSLPackage.CELL__X, oldX, x));
+    if (fillCells == null)
+    {
+      fillCells = new EObjectContainmentEList<FillCell>(FillCell.class, this, TasksDSLPackage.CELL__FILL_CELLS);
+    }
+    return fillCells;
   }
 
   /**
@@ -164,73 +115,16 @@ public class CellImpl extends MinimalEObjectImpl.Container implements Cell
    * @generated
    */
   @Override
-  public int getY()
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
-    return y;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setY(int newY)
-  {
-    int oldY = y;
-    y = newY;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, TasksDSLPackage.CELL__Y, oldY, y));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public int getNo()
-  {
-    return no;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setNo(int newNo)
-  {
-    int oldNo = no;
-    no = newNo;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, TasksDSLPackage.CELL__NO, oldNo, no));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Direction getDir()
-  {
-    return dir;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setDir(Direction newDir)
-  {
-    Direction oldDir = dir;
-    dir = newDir == null ? DIR_EDEFAULT : newDir;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, TasksDSLPackage.CELL__DIR, oldDir, dir));
+    switch (featureID)
+    {
+      case TasksDSLPackage.CELL__NCELLS:
+        return ((InternalEList<?>)getNCells()).basicRemove(otherEnd, msgs);
+      case TasksDSLPackage.CELL__FILL_CELLS:
+        return ((InternalEList<?>)getFillCells()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -243,14 +137,10 @@ public class CellImpl extends MinimalEObjectImpl.Container implements Cell
   {
     switch (featureID)
     {
-      case TasksDSLPackage.CELL__X:
-        return getX();
-      case TasksDSLPackage.CELL__Y:
-        return getY();
-      case TasksDSLPackage.CELL__NO:
-        return getNo();
-      case TasksDSLPackage.CELL__DIR:
-        return getDir();
+      case TasksDSLPackage.CELL__NCELLS:
+        return getNCells();
+      case TasksDSLPackage.CELL__FILL_CELLS:
+        return getFillCells();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -260,22 +150,19 @@ public class CellImpl extends MinimalEObjectImpl.Container implements Cell
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
-      case TasksDSLPackage.CELL__X:
-        setX((Integer)newValue);
+      case TasksDSLPackage.CELL__NCELLS:
+        getNCells().clear();
+        getNCells().addAll((Collection<? extends NormalCell>)newValue);
         return;
-      case TasksDSLPackage.CELL__Y:
-        setY((Integer)newValue);
-        return;
-      case TasksDSLPackage.CELL__NO:
-        setNo((Integer)newValue);
-        return;
-      case TasksDSLPackage.CELL__DIR:
-        setDir((Direction)newValue);
+      case TasksDSLPackage.CELL__FILL_CELLS:
+        getFillCells().clear();
+        getFillCells().addAll((Collection<? extends FillCell>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -291,17 +178,11 @@ public class CellImpl extends MinimalEObjectImpl.Container implements Cell
   {
     switch (featureID)
     {
-      case TasksDSLPackage.CELL__X:
-        setX(X_EDEFAULT);
+      case TasksDSLPackage.CELL__NCELLS:
+        getNCells().clear();
         return;
-      case TasksDSLPackage.CELL__Y:
-        setY(Y_EDEFAULT);
-        return;
-      case TasksDSLPackage.CELL__NO:
-        setNo(NO_EDEFAULT);
-        return;
-      case TasksDSLPackage.CELL__DIR:
-        setDir(DIR_EDEFAULT);
+      case TasksDSLPackage.CELL__FILL_CELLS:
+        getFillCells().clear();
         return;
     }
     super.eUnset(featureID);
@@ -317,39 +198,12 @@ public class CellImpl extends MinimalEObjectImpl.Container implements Cell
   {
     switch (featureID)
     {
-      case TasksDSLPackage.CELL__X:
-        return x != X_EDEFAULT;
-      case TasksDSLPackage.CELL__Y:
-        return y != Y_EDEFAULT;
-      case TasksDSLPackage.CELL__NO:
-        return no != NO_EDEFAULT;
-      case TasksDSLPackage.CELL__DIR:
-        return dir != DIR_EDEFAULT;
+      case TasksDSLPackage.CELL__NCELLS:
+        return nCells != null && !nCells.isEmpty();
+      case TasksDSLPackage.CELL__FILL_CELLS:
+        return fillCells != null && !fillCells.isEmpty();
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (x: ");
-    result.append(x);
-    result.append(", y: ");
-    result.append(y);
-    result.append(", no: ");
-    result.append(no);
-    result.append(", dir: ");
-    result.append(dir);
-    result.append(')');
-    return result.toString();
   }
 
 } //CellImpl

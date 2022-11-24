@@ -59,14 +59,14 @@ public interface TasksDSLPackage extends EPackage
   TasksDSLPackage eINSTANCE = goldsl.tasksDSL.impl.TasksDSLPackageImpl.init();
 
   /**
-   * The meta object id for the '{@link goldsl.tasksDSL.impl.GameoflifeImpl <em>Gameoflife</em>}' class.
+   * The meta object id for the '{@link goldsl.tasksDSL.impl.GameOfLifeImpl <em>Game Of Life</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see goldsl.tasksDSL.impl.GameoflifeImpl
-   * @see goldsl.tasksDSL.impl.TasksDSLPackageImpl#getGameoflife()
+   * @see goldsl.tasksDSL.impl.GameOfLifeImpl
+   * @see goldsl.tasksDSL.impl.TasksDSLPackageImpl#getGameOfLife()
    * @generated
    */
-  int GAMEOFLIFE = 0;
+  int GAME_OF_LIFE = 0;
 
   /**
    * The feature id for the '<em><b>Cells</b></em>' containment reference list.
@@ -75,7 +75,7 @@ public interface TasksDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAMEOFLIFE__CELLS = 0;
+  int GAME_OF_LIFE__CELLS = 0;
 
   /**
    * The feature id for the '<em><b>Rules</b></em>' containment reference list.
@@ -84,16 +84,16 @@ public interface TasksDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAMEOFLIFE__RULES = 1;
+  int GAME_OF_LIFE__RULES = 1;
 
   /**
-   * The number of structural features of the '<em>Gameoflife</em>' class.
+   * The number of structural features of the '<em>Game Of Life</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int GAMEOFLIFE_FEATURE_COUNT = 2;
+  int GAME_OF_LIFE_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link goldsl.tasksDSL.impl.CellImpl <em>Cell</em>}' class.
@@ -106,40 +106,22 @@ public interface TasksDSLPackage extends EPackage
   int CELL = 1;
 
   /**
-   * The feature id for the '<em><b>X</b></em>' attribute.
+   * The feature id for the '<em><b>NCells</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CELL__X = 0;
+  int CELL__NCELLS = 0;
 
   /**
-   * The feature id for the '<em><b>Y</b></em>' attribute.
+   * The feature id for the '<em><b>Fill Cells</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CELL__Y = 1;
-
-  /**
-   * The feature id for the '<em><b>No</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CELL__NO = 2;
-
-  /**
-   * The feature id for the '<em><b>Dir</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CELL__DIR = 3;
+  int CELL__FILL_CELLS = 1;
 
   /**
    * The number of structural features of the '<em>Cell</em>' class.
@@ -148,7 +130,99 @@ public interface TasksDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CELL_FEATURE_COUNT = 4;
+  int CELL_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link goldsl.tasksDSL.impl.NormalCellImpl <em>Normal Cell</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see goldsl.tasksDSL.impl.NormalCellImpl
+   * @see goldsl.tasksDSL.impl.TasksDSLPackageImpl#getNormalCell()
+   * @generated
+   */
+  int NORMAL_CELL = 2;
+
+  /**
+   * The feature id for the '<em><b>X</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NORMAL_CELL__X = 0;
+
+  /**
+   * The feature id for the '<em><b>Y</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NORMAL_CELL__Y = 1;
+
+  /**
+   * The number of structural features of the '<em>Normal Cell</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NORMAL_CELL_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link goldsl.tasksDSL.impl.FillCellImpl <em>Fill Cell</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see goldsl.tasksDSL.impl.FillCellImpl
+   * @see goldsl.tasksDSL.impl.TasksDSLPackageImpl#getFillCell()
+   * @generated
+   */
+  int FILL_CELL = 3;
+
+  /**
+   * The feature id for the '<em><b>X</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FILL_CELL__X = 0;
+
+  /**
+   * The feature id for the '<em><b>Y</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FILL_CELL__Y = 1;
+
+  /**
+   * The feature id for the '<em><b>Rep Amount</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FILL_CELL__REP_AMOUNT = 2;
+
+  /**
+   * The feature id for the '<em><b>Dir</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FILL_CELL__DIR = 3;
+
+  /**
+   * The number of structural features of the '<em>Fill Cell</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FILL_CELL_FEATURE_COUNT = 4;
 
   /**
    * The meta object id for the '{@link goldsl.tasksDSL.impl.RuleImpl <em>Rule</em>}' class.
@@ -158,7 +232,7 @@ public interface TasksDSLPackage extends EPackage
    * @see goldsl.tasksDSL.impl.TasksDSLPackageImpl#getRule()
    * @generated
    */
-  int RULE = 2;
+  int RULE = 4;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -204,7 +278,7 @@ public interface TasksDSLPackage extends EPackage
    * @see goldsl.tasksDSL.impl.TasksDSLPackageImpl#getDirection()
    * @generated
    */
-  int DIRECTION = 3;
+  int DIRECTION = 5;
 
   /**
    * The meta object id for the '{@link goldsl.tasksDSL.RuleType <em>Rule Type</em>}' enum.
@@ -214,40 +288,50 @@ public interface TasksDSLPackage extends EPackage
    * @see goldsl.tasksDSL.impl.TasksDSLPackageImpl#getRuleType()
    * @generated
    */
-  int RULE_TYPE = 4;
-
+  int RULE_TYPE = 6;
 
   /**
-   * Returns the meta object for class '{@link goldsl.tasksDSL.Gameoflife <em>Gameoflife</em>}'.
+   * The meta object id for the '{@link goldsl.tasksDSL.CompareSign <em>Compare Sign</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Gameoflife</em>'.
-   * @see goldsl.tasksDSL.Gameoflife
+   * @see goldsl.tasksDSL.CompareSign
+   * @see goldsl.tasksDSL.impl.TasksDSLPackageImpl#getCompareSign()
    * @generated
    */
-  EClass getGameoflife();
+  int COMPARE_SIGN = 7;
+
 
   /**
-   * Returns the meta object for the containment reference list '{@link goldsl.tasksDSL.Gameoflife#getCells <em>Cells</em>}'.
+   * Returns the meta object for class '{@link goldsl.tasksDSL.GameOfLife <em>Game Of Life</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Game Of Life</em>'.
+   * @see goldsl.tasksDSL.GameOfLife
+   * @generated
+   */
+  EClass getGameOfLife();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link goldsl.tasksDSL.GameOfLife#getCells <em>Cells</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Cells</em>'.
-   * @see goldsl.tasksDSL.Gameoflife#getCells()
-   * @see #getGameoflife()
+   * @see goldsl.tasksDSL.GameOfLife#getCells()
+   * @see #getGameOfLife()
    * @generated
    */
-  EReference getGameoflife_Cells();
+  EReference getGameOfLife_Cells();
 
   /**
-   * Returns the meta object for the containment reference list '{@link goldsl.tasksDSL.Gameoflife#getRules <em>Rules</em>}'.
+   * Returns the meta object for the containment reference list '{@link goldsl.tasksDSL.GameOfLife#getRules <em>Rules</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Rules</em>'.
-   * @see goldsl.tasksDSL.Gameoflife#getRules()
-   * @see #getGameoflife()
+   * @see goldsl.tasksDSL.GameOfLife#getRules()
+   * @see #getGameOfLife()
    * @generated
    */
-  EReference getGameoflife_Rules();
+  EReference getGameOfLife_Rules();
 
   /**
    * Returns the meta object for class '{@link goldsl.tasksDSL.Cell <em>Cell</em>}'.
@@ -260,48 +344,112 @@ public interface TasksDSLPackage extends EPackage
   EClass getCell();
 
   /**
-   * Returns the meta object for the attribute '{@link goldsl.tasksDSL.Cell#getX <em>X</em>}'.
+   * Returns the meta object for the containment reference list '{@link goldsl.tasksDSL.Cell#getNCells <em>NCells</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>NCells</em>'.
+   * @see goldsl.tasksDSL.Cell#getNCells()
+   * @see #getCell()
+   * @generated
+   */
+  EReference getCell_NCells();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link goldsl.tasksDSL.Cell#getFillCells <em>Fill Cells</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Fill Cells</em>'.
+   * @see goldsl.tasksDSL.Cell#getFillCells()
+   * @see #getCell()
+   * @generated
+   */
+  EReference getCell_FillCells();
+
+  /**
+   * Returns the meta object for class '{@link goldsl.tasksDSL.NormalCell <em>Normal Cell</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Normal Cell</em>'.
+   * @see goldsl.tasksDSL.NormalCell
+   * @generated
+   */
+  EClass getNormalCell();
+
+  /**
+   * Returns the meta object for the attribute '{@link goldsl.tasksDSL.NormalCell#getX <em>X</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>X</em>'.
-   * @see goldsl.tasksDSL.Cell#getX()
-   * @see #getCell()
+   * @see goldsl.tasksDSL.NormalCell#getX()
+   * @see #getNormalCell()
    * @generated
    */
-  EAttribute getCell_X();
+  EAttribute getNormalCell_X();
 
   /**
-   * Returns the meta object for the attribute '{@link goldsl.tasksDSL.Cell#getY <em>Y</em>}'.
+   * Returns the meta object for the attribute '{@link goldsl.tasksDSL.NormalCell#getY <em>Y</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Y</em>'.
-   * @see goldsl.tasksDSL.Cell#getY()
-   * @see #getCell()
+   * @see goldsl.tasksDSL.NormalCell#getY()
+   * @see #getNormalCell()
    * @generated
    */
-  EAttribute getCell_Y();
+  EAttribute getNormalCell_Y();
 
   /**
-   * Returns the meta object for the attribute '{@link goldsl.tasksDSL.Cell#getNo <em>No</em>}'.
+   * Returns the meta object for class '{@link goldsl.tasksDSL.FillCell <em>Fill Cell</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>No</em>'.
-   * @see goldsl.tasksDSL.Cell#getNo()
-   * @see #getCell()
+   * @return the meta object for class '<em>Fill Cell</em>'.
+   * @see goldsl.tasksDSL.FillCell
    * @generated
    */
-  EAttribute getCell_No();
+  EClass getFillCell();
 
   /**
-   * Returns the meta object for the attribute '{@link goldsl.tasksDSL.Cell#getDir <em>Dir</em>}'.
+   * Returns the meta object for the attribute '{@link goldsl.tasksDSL.FillCell#getX <em>X</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>X</em>'.
+   * @see goldsl.tasksDSL.FillCell#getX()
+   * @see #getFillCell()
+   * @generated
+   */
+  EAttribute getFillCell_X();
+
+  /**
+   * Returns the meta object for the attribute '{@link goldsl.tasksDSL.FillCell#getY <em>Y</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Y</em>'.
+   * @see goldsl.tasksDSL.FillCell#getY()
+   * @see #getFillCell()
+   * @generated
+   */
+  EAttribute getFillCell_Y();
+
+  /**
+   * Returns the meta object for the attribute '{@link goldsl.tasksDSL.FillCell#getRepAmount <em>Rep Amount</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Rep Amount</em>'.
+   * @see goldsl.tasksDSL.FillCell#getRepAmount()
+   * @see #getFillCell()
+   * @generated
+   */
+  EAttribute getFillCell_RepAmount();
+
+  /**
+   * Returns the meta object for the attribute '{@link goldsl.tasksDSL.FillCell#getDir <em>Dir</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Dir</em>'.
-   * @see goldsl.tasksDSL.Cell#getDir()
-   * @see #getCell()
+   * @see goldsl.tasksDSL.FillCell#getDir()
+   * @see #getFillCell()
    * @generated
    */
-  EAttribute getCell_Dir();
+  EAttribute getFillCell_Dir();
 
   /**
    * Returns the meta object for class '{@link goldsl.tasksDSL.Rule <em>Rule</em>}'.
@@ -367,6 +515,16 @@ public interface TasksDSLPackage extends EPackage
   EEnum getRuleType();
 
   /**
+   * Returns the meta object for enum '{@link goldsl.tasksDSL.CompareSign <em>Compare Sign</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for enum '<em>Compare Sign</em>'.
+   * @see goldsl.tasksDSL.CompareSign
+   * @generated
+   */
+  EEnum getCompareSign();
+
+  /**
    * Returns the factory that creates the instances of the model.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -390,14 +548,14 @@ public interface TasksDSLPackage extends EPackage
   interface Literals
   {
     /**
-     * The meta object literal for the '{@link goldsl.tasksDSL.impl.GameoflifeImpl <em>Gameoflife</em>}' class.
+     * The meta object literal for the '{@link goldsl.tasksDSL.impl.GameOfLifeImpl <em>Game Of Life</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see goldsl.tasksDSL.impl.GameoflifeImpl
-     * @see goldsl.tasksDSL.impl.TasksDSLPackageImpl#getGameoflife()
+     * @see goldsl.tasksDSL.impl.GameOfLifeImpl
+     * @see goldsl.tasksDSL.impl.TasksDSLPackageImpl#getGameOfLife()
      * @generated
      */
-    EClass GAMEOFLIFE = eINSTANCE.getGameoflife();
+    EClass GAME_OF_LIFE = eINSTANCE.getGameOfLife();
 
     /**
      * The meta object literal for the '<em><b>Cells</b></em>' containment reference list feature.
@@ -405,7 +563,7 @@ public interface TasksDSLPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference GAMEOFLIFE__CELLS = eINSTANCE.getGameoflife_Cells();
+    EReference GAME_OF_LIFE__CELLS = eINSTANCE.getGameOfLife_Cells();
 
     /**
      * The meta object literal for the '<em><b>Rules</b></em>' containment reference list feature.
@@ -413,7 +571,7 @@ public interface TasksDSLPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference GAMEOFLIFE__RULES = eINSTANCE.getGameoflife_Rules();
+    EReference GAME_OF_LIFE__RULES = eINSTANCE.getGameOfLife_Rules();
 
     /**
      * The meta object literal for the '{@link goldsl.tasksDSL.impl.CellImpl <em>Cell</em>}' class.
@@ -426,12 +584,38 @@ public interface TasksDSLPackage extends EPackage
     EClass CELL = eINSTANCE.getCell();
 
     /**
+     * The meta object literal for the '<em><b>NCells</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CELL__NCELLS = eINSTANCE.getCell_NCells();
+
+    /**
+     * The meta object literal for the '<em><b>Fill Cells</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CELL__FILL_CELLS = eINSTANCE.getCell_FillCells();
+
+    /**
+     * The meta object literal for the '{@link goldsl.tasksDSL.impl.NormalCellImpl <em>Normal Cell</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see goldsl.tasksDSL.impl.NormalCellImpl
+     * @see goldsl.tasksDSL.impl.TasksDSLPackageImpl#getNormalCell()
+     * @generated
+     */
+    EClass NORMAL_CELL = eINSTANCE.getNormalCell();
+
+    /**
      * The meta object literal for the '<em><b>X</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute CELL__X = eINSTANCE.getCell_X();
+    EAttribute NORMAL_CELL__X = eINSTANCE.getNormalCell_X();
 
     /**
      * The meta object literal for the '<em><b>Y</b></em>' attribute feature.
@@ -439,15 +623,41 @@ public interface TasksDSLPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute CELL__Y = eINSTANCE.getCell_Y();
+    EAttribute NORMAL_CELL__Y = eINSTANCE.getNormalCell_Y();
 
     /**
-     * The meta object literal for the '<em><b>No</b></em>' attribute feature.
+     * The meta object literal for the '{@link goldsl.tasksDSL.impl.FillCellImpl <em>Fill Cell</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see goldsl.tasksDSL.impl.FillCellImpl
+     * @see goldsl.tasksDSL.impl.TasksDSLPackageImpl#getFillCell()
+     * @generated
+     */
+    EClass FILL_CELL = eINSTANCE.getFillCell();
+
+    /**
+     * The meta object literal for the '<em><b>X</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute CELL__NO = eINSTANCE.getCell_No();
+    EAttribute FILL_CELL__X = eINSTANCE.getFillCell_X();
+
+    /**
+     * The meta object literal for the '<em><b>Y</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute FILL_CELL__Y = eINSTANCE.getFillCell_Y();
+
+    /**
+     * The meta object literal for the '<em><b>Rep Amount</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute FILL_CELL__REP_AMOUNT = eINSTANCE.getFillCell_RepAmount();
 
     /**
      * The meta object literal for the '<em><b>Dir</b></em>' attribute feature.
@@ -455,7 +665,7 @@ public interface TasksDSLPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute CELL__DIR = eINSTANCE.getCell_Dir();
+    EAttribute FILL_CELL__DIR = eINSTANCE.getFillCell_Dir();
 
     /**
      * The meta object literal for the '{@link goldsl.tasksDSL.impl.RuleImpl <em>Rule</em>}' class.
@@ -510,6 +720,16 @@ public interface TasksDSLPackage extends EPackage
      * @generated
      */
     EEnum RULE_TYPE = eINSTANCE.getRuleType();
+
+    /**
+     * The meta object literal for the '{@link goldsl.tasksDSL.CompareSign <em>Compare Sign</em>}' enum.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see goldsl.tasksDSL.CompareSign
+     * @see goldsl.tasksDSL.impl.TasksDSLPackageImpl#getCompareSign()
+     * @generated
+     */
+    EEnum COMPARE_SIGN = eINSTANCE.getCompareSign();
 
   }
 

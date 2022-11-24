@@ -3,6 +3,7 @@
  */
 package goldsl.tasksDSL.impl;
 
+import goldsl.tasksDSL.CompareSign;
 import goldsl.tasksDSL.Rule;
 import goldsl.tasksDSL.RuleType;
 import goldsl.tasksDSL.TasksDSLPackage;
@@ -59,7 +60,7 @@ public class RuleImpl extends MinimalEObjectImpl.Container implements Rule
    * @generated
    * @ordered
    */
-  protected static final String SIGN_EDEFAULT = null;
+  protected static final CompareSign SIGN_EDEFAULT = CompareSign.BIGGER_THAN;
 
   /**
    * The cached value of the '{@link #getSign() <em>Sign</em>}' attribute.
@@ -69,7 +70,7 @@ public class RuleImpl extends MinimalEObjectImpl.Container implements Rule
    * @generated
    * @ordered
    */
-  protected String sign = SIGN_EDEFAULT;
+  protected CompareSign sign = SIGN_EDEFAULT;
 
   /**
    * The default value of the '{@link #getN() <em>N</em>}' attribute.
@@ -143,7 +144,7 @@ public class RuleImpl extends MinimalEObjectImpl.Container implements Rule
    * @generated
    */
   @Override
-  public String getSign()
+  public CompareSign getSign()
   {
     return sign;
   }
@@ -154,10 +155,10 @@ public class RuleImpl extends MinimalEObjectImpl.Container implements Rule
    * @generated
    */
   @Override
-  public void setSign(String newSign)
+  public void setSign(CompareSign newSign)
   {
-    String oldSign = sign;
-    sign = newSign;
+    CompareSign oldSign = sign;
+    sign = newSign == null ? SIGN_EDEFAULT : newSign;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, TasksDSLPackage.RULE__SIGN, oldSign, sign));
   }
@@ -221,7 +222,7 @@ public class RuleImpl extends MinimalEObjectImpl.Container implements Rule
         setType((RuleType)newValue);
         return;
       case TasksDSLPackage.RULE__SIGN:
-        setSign((String)newValue);
+        setSign((CompareSign)newValue);
         return;
       case TasksDSLPackage.RULE__N:
         setN((Integer)newValue);
@@ -266,7 +267,7 @@ public class RuleImpl extends MinimalEObjectImpl.Container implements Rule
       case TasksDSLPackage.RULE__TYPE:
         return type != TYPE_EDEFAULT;
       case TasksDSLPackage.RULE__SIGN:
-        return SIGN_EDEFAULT == null ? sign != null : !SIGN_EDEFAULT.equals(sign);
+        return sign != SIGN_EDEFAULT;
       case TasksDSLPackage.RULE__N:
         return n != N_EDEFAULT;
     }

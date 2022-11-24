@@ -4,8 +4,11 @@
 package goldsl.tasksDSL.impl;
 
 import goldsl.tasksDSL.Cell;
+import goldsl.tasksDSL.CompareSign;
 import goldsl.tasksDSL.Direction;
-import goldsl.tasksDSL.Gameoflife;
+import goldsl.tasksDSL.FillCell;
+import goldsl.tasksDSL.GameOfLife;
+import goldsl.tasksDSL.NormalCell;
 import goldsl.tasksDSL.Rule;
 import goldsl.tasksDSL.RuleType;
 import goldsl.tasksDSL.TasksDSLFactory;
@@ -32,7 +35,7 @@ public class TasksDSLPackageImpl extends EPackageImpl implements TasksDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass gameoflifeEClass = null;
+  private EClass gameOfLifeEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -40,6 +43,20 @@ public class TasksDSLPackageImpl extends EPackageImpl implements TasksDSLPackage
    * @generated
    */
   private EClass cellEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass normalCellEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass fillCellEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -61,6 +78,13 @@ public class TasksDSLPackageImpl extends EPackageImpl implements TasksDSLPackage
    * @generated
    */
   private EEnum ruleTypeEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum compareSignEEnum = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -130,9 +154,9 @@ public class TasksDSLPackageImpl extends EPackageImpl implements TasksDSLPackage
    * @generated
    */
   @Override
-  public EClass getGameoflife()
+  public EClass getGameOfLife()
   {
-    return gameoflifeEClass;
+    return gameOfLifeEClass;
   }
 
   /**
@@ -141,9 +165,9 @@ public class TasksDSLPackageImpl extends EPackageImpl implements TasksDSLPackage
    * @generated
    */
   @Override
-  public EReference getGameoflife_Cells()
+  public EReference getGameOfLife_Cells()
   {
-    return (EReference)gameoflifeEClass.getEStructuralFeatures().get(0);
+    return (EReference)gameOfLifeEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -152,9 +176,9 @@ public class TasksDSLPackageImpl extends EPackageImpl implements TasksDSLPackage
    * @generated
    */
   @Override
-  public EReference getGameoflife_Rules()
+  public EReference getGameOfLife_Rules()
   {
-    return (EReference)gameoflifeEClass.getEStructuralFeatures().get(1);
+    return (EReference)gameOfLifeEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -174,9 +198,9 @@ public class TasksDSLPackageImpl extends EPackageImpl implements TasksDSLPackage
    * @generated
    */
   @Override
-  public EAttribute getCell_X()
+  public EReference getCell_NCells()
   {
-    return (EAttribute)cellEClass.getEStructuralFeatures().get(0);
+    return (EReference)cellEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -185,9 +209,9 @@ public class TasksDSLPackageImpl extends EPackageImpl implements TasksDSLPackage
    * @generated
    */
   @Override
-  public EAttribute getCell_Y()
+  public EReference getCell_FillCells()
   {
-    return (EAttribute)cellEClass.getEStructuralFeatures().get(1);
+    return (EReference)cellEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -196,9 +220,9 @@ public class TasksDSLPackageImpl extends EPackageImpl implements TasksDSLPackage
    * @generated
    */
   @Override
-  public EAttribute getCell_No()
+  public EClass getNormalCell()
   {
-    return (EAttribute)cellEClass.getEStructuralFeatures().get(2);
+    return normalCellEClass;
   }
 
   /**
@@ -207,9 +231,75 @@ public class TasksDSLPackageImpl extends EPackageImpl implements TasksDSLPackage
    * @generated
    */
   @Override
-  public EAttribute getCell_Dir()
+  public EAttribute getNormalCell_X()
   {
-    return (EAttribute)cellEClass.getEStructuralFeatures().get(3);
+    return (EAttribute)normalCellEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getNormalCell_Y()
+  {
+    return (EAttribute)normalCellEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getFillCell()
+  {
+    return fillCellEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getFillCell_X()
+  {
+    return (EAttribute)fillCellEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getFillCell_Y()
+  {
+    return (EAttribute)fillCellEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getFillCell_RepAmount()
+  {
+    return (EAttribute)fillCellEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getFillCell_Dir()
+  {
+    return (EAttribute)fillCellEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -284,6 +374,17 @@ public class TasksDSLPackageImpl extends EPackageImpl implements TasksDSLPackage
    * @generated
    */
   @Override
+  public EEnum getCompareSign()
+  {
+    return compareSignEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public TasksDSLFactory getTasksDSLFactory()
   {
     return (TasksDSLFactory)getEFactoryInstance();
@@ -309,15 +410,23 @@ public class TasksDSLPackageImpl extends EPackageImpl implements TasksDSLPackage
     isCreated = true;
 
     // Create classes and their features
-    gameoflifeEClass = createEClass(GAMEOFLIFE);
-    createEReference(gameoflifeEClass, GAMEOFLIFE__CELLS);
-    createEReference(gameoflifeEClass, GAMEOFLIFE__RULES);
+    gameOfLifeEClass = createEClass(GAME_OF_LIFE);
+    createEReference(gameOfLifeEClass, GAME_OF_LIFE__CELLS);
+    createEReference(gameOfLifeEClass, GAME_OF_LIFE__RULES);
 
     cellEClass = createEClass(CELL);
-    createEAttribute(cellEClass, CELL__X);
-    createEAttribute(cellEClass, CELL__Y);
-    createEAttribute(cellEClass, CELL__NO);
-    createEAttribute(cellEClass, CELL__DIR);
+    createEReference(cellEClass, CELL__NCELLS);
+    createEReference(cellEClass, CELL__FILL_CELLS);
+
+    normalCellEClass = createEClass(NORMAL_CELL);
+    createEAttribute(normalCellEClass, NORMAL_CELL__X);
+    createEAttribute(normalCellEClass, NORMAL_CELL__Y);
+
+    fillCellEClass = createEClass(FILL_CELL);
+    createEAttribute(fillCellEClass, FILL_CELL__X);
+    createEAttribute(fillCellEClass, FILL_CELL__Y);
+    createEAttribute(fillCellEClass, FILL_CELL__REP_AMOUNT);
+    createEAttribute(fillCellEClass, FILL_CELL__DIR);
 
     ruleEClass = createEClass(RULE);
     createEAttribute(ruleEClass, RULE__TYPE);
@@ -327,6 +436,7 @@ public class TasksDSLPackageImpl extends EPackageImpl implements TasksDSLPackage
     // Create enums
     directionEEnum = createEEnum(DIRECTION);
     ruleTypeEEnum = createEEnum(RULE_TYPE);
+    compareSignEEnum = createEEnum(COMPARE_SIGN);
   }
 
   /**
@@ -360,19 +470,27 @@ public class TasksDSLPackageImpl extends EPackageImpl implements TasksDSLPackage
     // Add supertypes to classes
 
     // Initialize classes and features; add operations and parameters
-    initEClass(gameoflifeEClass, Gameoflife.class, "Gameoflife", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getGameoflife_Cells(), this.getCell(), null, "cells", null, 0, -1, Gameoflife.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getGameoflife_Rules(), this.getRule(), null, "rules", null, 0, -1, Gameoflife.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(gameOfLifeEClass, GameOfLife.class, "GameOfLife", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getGameOfLife_Cells(), this.getCell(), null, "cells", null, 0, -1, GameOfLife.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getGameOfLife_Rules(), this.getRule(), null, "rules", null, 0, -1, GameOfLife.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(cellEClass, Cell.class, "Cell", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getCell_X(), ecorePackage.getEInt(), "x", null, 0, 1, Cell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getCell_Y(), ecorePackage.getEInt(), "y", null, 0, 1, Cell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getCell_No(), ecorePackage.getEInt(), "no", null, 0, 1, Cell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getCell_Dir(), this.getDirection(), "dir", null, 0, 1, Cell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCell_NCells(), this.getNormalCell(), null, "nCells", null, 0, -1, Cell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCell_FillCells(), this.getFillCell(), null, "fillCells", null, 0, -1, Cell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(normalCellEClass, NormalCell.class, "NormalCell", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getNormalCell_X(), ecorePackage.getEInt(), "x", null, 0, 1, NormalCell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getNormalCell_Y(), ecorePackage.getEInt(), "y", null, 0, 1, NormalCell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(fillCellEClass, FillCell.class, "FillCell", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getFillCell_X(), ecorePackage.getEInt(), "x", null, 0, 1, FillCell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getFillCell_Y(), ecorePackage.getEInt(), "y", null, 0, 1, FillCell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getFillCell_RepAmount(), ecorePackage.getEInt(), "repAmount", null, 0, 1, FillCell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getFillCell_Dir(), this.getDirection(), "dir", null, 0, 1, FillCell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(ruleEClass, Rule.class, "Rule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getRule_Type(), this.getRuleType(), "type", null, 0, 1, Rule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getRule_Sign(), ecorePackage.getEString(), "sign", null, 0, 1, Rule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getRule_Sign(), this.getCompareSign(), "sign", null, 0, 1, Rule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getRule_N(), ecorePackage.getEInt(), "n", null, 0, 1, Rule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Initialize enums and add enum literals
@@ -386,6 +504,11 @@ public class TasksDSLPackageImpl extends EPackageImpl implements TasksDSLPackage
     addEEnumLiteral(ruleTypeEEnum, RuleType.MULTIPLY);
     addEEnumLiteral(ruleTypeEEnum, RuleType.STAY);
     addEEnumLiteral(ruleTypeEEnum, RuleType.DIE);
+
+    initEEnum(compareSignEEnum, CompareSign.class, "CompareSign");
+    addEEnumLiteral(compareSignEEnum, CompareSign.BIGGER_THAN);
+    addEEnumLiteral(compareSignEEnum, CompareSign.EQUAL);
+    addEEnumLiteral(compareSignEEnum, CompareSign.SMALLER_THAN);
 
     // Create resource
     createResource(eNS_URI);

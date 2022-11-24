@@ -3,6 +3,8 @@
  */
 package goldsl.tasksDSL;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -14,10 +16,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link goldsl.tasksDSL.Cell#getX <em>X</em>}</li>
- *   <li>{@link goldsl.tasksDSL.Cell#getY <em>Y</em>}</li>
- *   <li>{@link goldsl.tasksDSL.Cell#getNo <em>No</em>}</li>
- *   <li>{@link goldsl.tasksDSL.Cell#getDir <em>Dir</em>}</li>
+ *   <li>{@link goldsl.tasksDSL.Cell#getNCells <em>NCells</em>}</li>
+ *   <li>{@link goldsl.tasksDSL.Cell#getFillCells <em>Fill Cells</em>}</li>
  * </ul>
  *
  * @see goldsl.tasksDSL.TasksDSLPackage#getCell()
@@ -27,94 +27,27 @@ import org.eclipse.emf.ecore.EObject;
 public interface Cell extends EObject
 {
   /**
-   * Returns the value of the '<em><b>X</b></em>' attribute.
+   * Returns the value of the '<em><b>NCells</b></em>' containment reference list.
+   * The list contents are of type {@link goldsl.tasksDSL.NormalCell}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>X</em>' attribute.
-   * @see #setX(int)
-   * @see goldsl.tasksDSL.TasksDSLPackage#getCell_X()
-   * @model
+   * @return the value of the '<em>NCells</em>' containment reference list.
+   * @see goldsl.tasksDSL.TasksDSLPackage#getCell_NCells()
+   * @model containment="true"
    * @generated
    */
-  int getX();
+  EList<NormalCell> getNCells();
 
   /**
-   * Sets the value of the '{@link goldsl.tasksDSL.Cell#getX <em>X</em>}' attribute.
+   * Returns the value of the '<em><b>Fill Cells</b></em>' containment reference list.
+   * The list contents are of type {@link goldsl.tasksDSL.FillCell}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>X</em>' attribute.
-   * @see #getX()
+   * @return the value of the '<em>Fill Cells</em>' containment reference list.
+   * @see goldsl.tasksDSL.TasksDSLPackage#getCell_FillCells()
+   * @model containment="true"
    * @generated
    */
-  void setX(int value);
-
-  /**
-   * Returns the value of the '<em><b>Y</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Y</em>' attribute.
-   * @see #setY(int)
-   * @see goldsl.tasksDSL.TasksDSLPackage#getCell_Y()
-   * @model
-   * @generated
-   */
-  int getY();
-
-  /**
-   * Sets the value of the '{@link goldsl.tasksDSL.Cell#getY <em>Y</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Y</em>' attribute.
-   * @see #getY()
-   * @generated
-   */
-  void setY(int value);
-
-  /**
-   * Returns the value of the '<em><b>No</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>No</em>' attribute.
-   * @see #setNo(int)
-   * @see goldsl.tasksDSL.TasksDSLPackage#getCell_No()
-   * @model
-   * @generated
-   */
-  int getNo();
-
-  /**
-   * Sets the value of the '{@link goldsl.tasksDSL.Cell#getNo <em>No</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>No</em>' attribute.
-   * @see #getNo()
-   * @generated
-   */
-  void setNo(int value);
-
-  /**
-   * Returns the value of the '<em><b>Dir</b></em>' attribute.
-   * The literals are from the enumeration {@link goldsl.tasksDSL.Direction}.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Dir</em>' attribute.
-   * @see goldsl.tasksDSL.Direction
-   * @see #setDir(Direction)
-   * @see goldsl.tasksDSL.TasksDSLPackage#getCell_Dir()
-   * @model
-   * @generated
-   */
-  Direction getDir();
-
-  /**
-   * Sets the value of the '{@link goldsl.tasksDSL.Cell#getDir <em>Dir</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Dir</em>' attribute.
-   * @see goldsl.tasksDSL.Direction
-   * @see #getDir()
-   * @generated
-   */
-  void setDir(Direction value);
+  EList<FillCell> getFillCells();
 
 } // Cell

@@ -66,8 +66,10 @@ public class TasksDSLFactoryImpl extends EFactoryImpl implements TasksDSLFactory
   {
     switch (eClass.getClassifierID())
     {
-      case TasksDSLPackage.GAMEOFLIFE: return createGameoflife();
+      case TasksDSLPackage.GAME_OF_LIFE: return createGameOfLife();
       case TasksDSLPackage.CELL: return createCell();
+      case TasksDSLPackage.NORMAL_CELL: return createNormalCell();
+      case TasksDSLPackage.FILL_CELL: return createFillCell();
       case TasksDSLPackage.RULE: return createRule();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -88,6 +90,8 @@ public class TasksDSLFactoryImpl extends EFactoryImpl implements TasksDSLFactory
         return createDirectionFromString(eDataType, initialValue);
       case TasksDSLPackage.RULE_TYPE:
         return createRuleTypeFromString(eDataType, initialValue);
+      case TasksDSLPackage.COMPARE_SIGN:
+        return createCompareSignFromString(eDataType, initialValue);
       default:
         throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
@@ -107,6 +111,8 @@ public class TasksDSLFactoryImpl extends EFactoryImpl implements TasksDSLFactory
         return convertDirectionToString(eDataType, instanceValue);
       case TasksDSLPackage.RULE_TYPE:
         return convertRuleTypeToString(eDataType, instanceValue);
+      case TasksDSLPackage.COMPARE_SIGN:
+        return convertCompareSignToString(eDataType, instanceValue);
       default:
         throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
@@ -118,10 +124,10 @@ public class TasksDSLFactoryImpl extends EFactoryImpl implements TasksDSLFactory
    * @generated
    */
   @Override
-  public Gameoflife createGameoflife()
+  public GameOfLife createGameOfLife()
   {
-    GameoflifeImpl gameoflife = new GameoflifeImpl();
-    return gameoflife;
+    GameOfLifeImpl gameOfLife = new GameOfLifeImpl();
+    return gameOfLife;
   }
 
   /**
@@ -134,6 +140,30 @@ public class TasksDSLFactoryImpl extends EFactoryImpl implements TasksDSLFactory
   {
     CellImpl cell = new CellImpl();
     return cell;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NormalCell createNormalCell()
+  {
+    NormalCellImpl normalCell = new NormalCellImpl();
+    return normalCell;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public FillCell createFillCell()
+  {
+    FillCellImpl fillCell = new FillCellImpl();
+    return fillCell;
   }
 
   /**
@@ -188,6 +218,28 @@ public class TasksDSLFactoryImpl extends EFactoryImpl implements TasksDSLFactory
    * @generated
    */
   public String convertRuleTypeToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public CompareSign createCompareSignFromString(EDataType eDataType, String initialValue)
+  {
+    CompareSign result = CompareSign.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertCompareSignToString(EDataType eDataType, Object instanceValue)
   {
     return instanceValue == null ? null : instanceValue.toString();
   }

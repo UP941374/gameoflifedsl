@@ -9,22 +9,22 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Gameoflife</b></em>'.
+ * A representation of the model object '<em><b>Game Of Life</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link goldsl.tasksDSL.Gameoflife#getCells <em>Cells</em>}</li>
- *   <li>{@link goldsl.tasksDSL.Gameoflife#getRules <em>Rules</em>}</li>
+ *   <li>{@link goldsl.tasksDSL.GameOfLife#getCells <em>Cells</em>}</li>
+ *   <li>{@link goldsl.tasksDSL.GameOfLife#getRules <em>Rules</em>}</li>
  * </ul>
  *
- * @see goldsl.tasksDSL.TasksDSLPackage#getGameoflife()
+ * @see goldsl.tasksDSL.TasksDSLPackage#getGameOfLife()
  * @model
  * @generated
  */
-public interface Gameoflife extends EObject
+public interface GameOfLife extends EObject
 {
   /**
    * Returns the value of the '<em><b>Cells</b></em>' containment reference list.
@@ -32,7 +32,7 @@ public interface Gameoflife extends EObject
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Cells</em>' containment reference list.
-   * @see goldsl.tasksDSL.TasksDSLPackage#getGameoflife_Cells()
+   * @see goldsl.tasksDSL.TasksDSLPackage#getGameOfLife_Cells()
    * @model containment="true"
    * @generated
    */
@@ -44,10 +44,10 @@ public interface Gameoflife extends EObject
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Rules</em>' containment reference list.
-   * @see goldsl.tasksDSL.TasksDSLPackage#getGameoflife_Rules()
+   * @see goldsl.tasksDSL.TasksDSLPackage#getGameOfLife_Rules()
    * @model containment="true"
    * @generated
    */
   EList<Rule> getRules();
 
-} // Gameoflife
+} // GameOfLife

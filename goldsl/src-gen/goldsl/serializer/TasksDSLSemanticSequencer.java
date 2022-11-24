@@ -6,7 +6,9 @@ package goldsl.serializer;
 import com.google.inject.Inject;
 import goldsl.services.TasksDSLGrammarAccess;
 import goldsl.tasksDSL.Cell;
-import goldsl.tasksDSL.Gameoflife;
+import goldsl.tasksDSL.FillCell;
+import goldsl.tasksDSL.GameOfLife;
+import goldsl.tasksDSL.NormalCell;
 import goldsl.tasksDSL.Rule;
 import goldsl.tasksDSL.TasksDSLPackage;
 import java.util.Set;
@@ -16,7 +18,9 @@ import org.eclipse.xtext.Action;
 import org.eclipse.xtext.Parameter;
 import org.eclipse.xtext.ParserRule;
 import org.eclipse.xtext.serializer.ISerializationContext;
+import org.eclipse.xtext.serializer.acceptor.SequenceFeeder;
 import org.eclipse.xtext.serializer.sequencer.AbstractDelegatingSemanticSequencer;
+import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
 
 @SuppressWarnings("all")
 public class TasksDSLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
@@ -35,8 +39,14 @@ public class TasksDSLSemanticSequencer extends AbstractDelegatingSemanticSequenc
 			case TasksDSLPackage.CELL:
 				sequence_Cell(context, (Cell) semanticObject); 
 				return; 
-			case TasksDSLPackage.GAMEOFLIFE:
-				sequence_Gameoflife(context, (Gameoflife) semanticObject); 
+			case TasksDSLPackage.FILL_CELL:
+				sequence_FillCell(context, (FillCell) semanticObject); 
+				return; 
+			case TasksDSLPackage.GAME_OF_LIFE:
+				sequence_GameOfLife(context, (GameOfLife) semanticObject); 
+				return; 
+			case TasksDSLPackage.NORMAL_CELL:
+				sequence_NormalCell(context, (NormalCell) semanticObject); 
 				return; 
 			case TasksDSLPackage.RULE:
 				sequence_Rule(context, (Rule) semanticObject); 
@@ -52,7 +62,7 @@ public class TasksDSLSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     Cell returns Cell
 	 *
 	 * Constraint:
-	 *     ((x=INT y=INT (no=INT dir=Direction)?) | no=INT)
+	 *     (nCells+=NormalCell | fillCells+=FillCell)+
 	 * </pre>
 	 */
 	protected void sequence_Cell(ISerializationContext context, Cell semanticObject) {
@@ -63,14 +73,66 @@ public class TasksDSLSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     Gameoflife returns Gameoflife
+	 *     FillCell returns FillCell
+	 *
+	 * Constraint:
+	 *     (x=INT y=INT repAmount=INT dir=Direction)
+	 * </pre>
+	 */
+	protected void sequence_FillCell(ISerializationContext context, FillCell semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, TasksDSLPackage.Literals.FILL_CELL__X) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TasksDSLPackage.Literals.FILL_CELL__X));
+			if (transientValues.isValueTransient(semanticObject, TasksDSLPackage.Literals.FILL_CELL__Y) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TasksDSLPackage.Literals.FILL_CELL__Y));
+			if (transientValues.isValueTransient(semanticObject, TasksDSLPackage.Literals.FILL_CELL__REP_AMOUNT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TasksDSLPackage.Literals.FILL_CELL__REP_AMOUNT));
+			if (transientValues.isValueTransient(semanticObject, TasksDSLPackage.Literals.FILL_CELL__DIR) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TasksDSLPackage.Literals.FILL_CELL__DIR));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getFillCellAccess().getXINTTerminalRuleCall_1_0(), semanticObject.getX());
+		feeder.accept(grammarAccess.getFillCellAccess().getYINTTerminalRuleCall_3_0(), semanticObject.getY());
+		feeder.accept(grammarAccess.getFillCellAccess().getRepAmountINTTerminalRuleCall_5_0(), semanticObject.getRepAmount());
+		feeder.accept(grammarAccess.getFillCellAccess().getDirDirectionEnumRuleCall_7_0(), semanticObject.getDir());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     GameOfLife returns GameOfLife
 	 *
 	 * Constraint:
 	 *     ((cells+=Cell+ rules+=Rule+) | rules+=Rule+)?
 	 * </pre>
 	 */
-	protected void sequence_Gameoflife(ISerializationContext context, Gameoflife semanticObject) {
+	protected void sequence_GameOfLife(ISerializationContext context, GameOfLife semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     NormalCell returns NormalCell
+	 *
+	 * Constraint:
+	 *     (x=INT y=INT)
+	 * </pre>
+	 */
+	protected void sequence_NormalCell(ISerializationContext context, NormalCell semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, TasksDSLPackage.Literals.NORMAL_CELL__X) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TasksDSLPackage.Literals.NORMAL_CELL__X));
+			if (transientValues.isValueTransient(semanticObject, TasksDSLPackage.Literals.NORMAL_CELL__Y) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TasksDSLPackage.Literals.NORMAL_CELL__Y));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getNormalCellAccess().getXINTTerminalRuleCall_1_0(), semanticObject.getX());
+		feeder.accept(grammarAccess.getNormalCellAccess().getYINTTerminalRuleCall_3_0(), semanticObject.getY());
+		feeder.finish();
 	}
 	
 	
@@ -80,11 +142,23 @@ public class TasksDSLSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     Rule returns Rule
 	 *
 	 * Constraint:
-	 *     (type=RuleType sign='&lt;'? n=INT)
+	 *     (type=RuleType sign=CompareSign n=INT)
 	 * </pre>
 	 */
 	protected void sequence_Rule(ISerializationContext context, Rule semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, TasksDSLPackage.Literals.RULE__TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TasksDSLPackage.Literals.RULE__TYPE));
+			if (transientValues.isValueTransient(semanticObject, TasksDSLPackage.Literals.RULE__SIGN) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TasksDSLPackage.Literals.RULE__SIGN));
+			if (transientValues.isValueTransient(semanticObject, TasksDSLPackage.Literals.RULE__N) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TasksDSLPackage.Literals.RULE__N));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getRuleAccess().getTypeRuleTypeEnumRuleCall_1_0(), semanticObject.getType());
+		feeder.accept(grammarAccess.getRuleAccess().getSignCompareSignEnumRuleCall_2_0(), semanticObject.getSign());
+		feeder.accept(grammarAccess.getRuleAccess().getNINTTerminalRuleCall_3_0(), semanticObject.getN());
+		feeder.finish();
 	}
 	
 	

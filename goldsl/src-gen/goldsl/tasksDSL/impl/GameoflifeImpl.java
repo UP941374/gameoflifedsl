@@ -4,7 +4,7 @@
 package goldsl.tasksDSL.impl;
 
 import goldsl.tasksDSL.Cell;
-import goldsl.tasksDSL.Gameoflife;
+import goldsl.tasksDSL.GameOfLife;
 import goldsl.tasksDSL.Rule;
 import goldsl.tasksDSL.TasksDSLPackage;
 
@@ -24,19 +24,19 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Gameoflife</b></em>'.
+ * An implementation of the model object '<em><b>Game Of Life</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link goldsl.tasksDSL.impl.GameoflifeImpl#getCells <em>Cells</em>}</li>
- *   <li>{@link goldsl.tasksDSL.impl.GameoflifeImpl#getRules <em>Rules</em>}</li>
+ *   <li>{@link goldsl.tasksDSL.impl.GameOfLifeImpl#getCells <em>Cells</em>}</li>
+ *   <li>{@link goldsl.tasksDSL.impl.GameOfLifeImpl#getRules <em>Rules</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class GameoflifeImpl extends MinimalEObjectImpl.Container implements Gameoflife
+public class GameOfLifeImpl extends MinimalEObjectImpl.Container implements GameOfLife
 {
   /**
    * The cached value of the '{@link #getCells() <em>Cells</em>}' containment reference list.
@@ -63,7 +63,7 @@ public class GameoflifeImpl extends MinimalEObjectImpl.Container implements Game
    * <!-- end-user-doc -->
    * @generated
    */
-  protected GameoflifeImpl()
+  protected GameOfLifeImpl()
   {
     super();
   }
@@ -76,7 +76,7 @@ public class GameoflifeImpl extends MinimalEObjectImpl.Container implements Game
   @Override
   protected EClass eStaticClass()
   {
-    return TasksDSLPackage.Literals.GAMEOFLIFE;
+    return TasksDSLPackage.Literals.GAME_OF_LIFE;
   }
 
   /**
@@ -89,7 +89,7 @@ public class GameoflifeImpl extends MinimalEObjectImpl.Container implements Game
   {
     if (cells == null)
     {
-      cells = new EObjectContainmentEList<Cell>(Cell.class, this, TasksDSLPackage.GAMEOFLIFE__CELLS);
+      cells = new EObjectContainmentEList<Cell>(Cell.class, this, TasksDSLPackage.GAME_OF_LIFE__CELLS);
     }
     return cells;
   }
@@ -104,7 +104,7 @@ public class GameoflifeImpl extends MinimalEObjectImpl.Container implements Game
   {
     if (rules == null)
     {
-      rules = new EObjectContainmentEList<Rule>(Rule.class, this, TasksDSLPackage.GAMEOFLIFE__RULES);
+      rules = new EObjectContainmentEList<Rule>(Rule.class, this, TasksDSLPackage.GAME_OF_LIFE__RULES);
     }
     return rules;
   }
@@ -119,9 +119,9 @@ public class GameoflifeImpl extends MinimalEObjectImpl.Container implements Game
   {
     switch (featureID)
     {
-      case TasksDSLPackage.GAMEOFLIFE__CELLS:
+      case TasksDSLPackage.GAME_OF_LIFE__CELLS:
         return ((InternalEList<?>)getCells()).basicRemove(otherEnd, msgs);
-      case TasksDSLPackage.GAMEOFLIFE__RULES:
+      case TasksDSLPackage.GAME_OF_LIFE__RULES:
         return ((InternalEList<?>)getRules()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -137,9 +137,9 @@ public class GameoflifeImpl extends MinimalEObjectImpl.Container implements Game
   {
     switch (featureID)
     {
-      case TasksDSLPackage.GAMEOFLIFE__CELLS:
+      case TasksDSLPackage.GAME_OF_LIFE__CELLS:
         return getCells();
-      case TasksDSLPackage.GAMEOFLIFE__RULES:
+      case TasksDSLPackage.GAME_OF_LIFE__RULES:
         return getRules();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -156,11 +156,11 @@ public class GameoflifeImpl extends MinimalEObjectImpl.Container implements Game
   {
     switch (featureID)
     {
-      case TasksDSLPackage.GAMEOFLIFE__CELLS:
+      case TasksDSLPackage.GAME_OF_LIFE__CELLS:
         getCells().clear();
         getCells().addAll((Collection<? extends Cell>)newValue);
         return;
-      case TasksDSLPackage.GAMEOFLIFE__RULES:
+      case TasksDSLPackage.GAME_OF_LIFE__RULES:
         getRules().clear();
         getRules().addAll((Collection<? extends Rule>)newValue);
         return;
@@ -178,10 +178,10 @@ public class GameoflifeImpl extends MinimalEObjectImpl.Container implements Game
   {
     switch (featureID)
     {
-      case TasksDSLPackage.GAMEOFLIFE__CELLS:
+      case TasksDSLPackage.GAME_OF_LIFE__CELLS:
         getCells().clear();
         return;
-      case TasksDSLPackage.GAMEOFLIFE__RULES:
+      case TasksDSLPackage.GAME_OF_LIFE__RULES:
         getRules().clear();
         return;
     }
@@ -198,12 +198,12 @@ public class GameoflifeImpl extends MinimalEObjectImpl.Container implements Game
   {
     switch (featureID)
     {
-      case TasksDSLPackage.GAMEOFLIFE__CELLS:
+      case TasksDSLPackage.GAME_OF_LIFE__CELLS:
         return cells != null && !cells.isEmpty();
-      case TasksDSLPackage.GAMEOFLIFE__RULES:
+      case TasksDSLPackage.GAME_OF_LIFE__RULES:
         return rules != null && !rules.isEmpty();
     }
     return super.eIsSet(featureID);
   }
 
-} //GameoflifeImpl
+} //GameOfLifeImpl
