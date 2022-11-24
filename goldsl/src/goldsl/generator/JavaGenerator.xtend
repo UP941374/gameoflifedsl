@@ -29,13 +29,13 @@ class JavaGenerator {
 					    //RULES:
 		    			«FOR rule : Auxiliary.getRules(root)»
 		    				«IF rule.type === RuleType::STAY»
-		    				if ((gameBoard[i][j]) && (surrounding «rule.sign» 2)){
+		    				if ((gameBoard[i][j]) && (surrounding «rule.sign» «rule.n»)){
 		    					survivingCells.add(new Point(i-1,j-1));
 		    				}
 		    				«ENDIF»
 		    											
 		    				«IF rule.type === RuleType::COME_ALIVE»
-		    				if ((!gameBoard[i][j]) && (surrounding «rule.sign» 6)){
+		    				if ((!gameBoard[i][j]) && (surrounding «rule.sign» «rule.n»)){
 		    					survivingCells.add(new Point(i-1,j-1));
 		    				} 
 		    				«ENDIF»
