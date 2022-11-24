@@ -509,10 +509,10 @@ ruleRuleType returns [Enumerator current=null]
 }:
 	(
 		(
-			enumLiteral_0='multiply'
+			enumLiteral_0='come_alive'
 			{
-				$current = grammarAccess.getRuleTypeAccess().getMULTIPLYEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_0, grammarAccess.getRuleTypeAccess().getMULTIPLYEnumLiteralDeclaration_0());
+				$current = grammarAccess.getRuleTypeAccess().getCOME_ALIVEEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_0, grammarAccess.getRuleTypeAccess().getCOME_ALIVEEnumLiteralDeclaration_0());
 			}
 		)
 		    |

@@ -35,7 +35,7 @@
     <eLiterals name="WEST" value="3" literal="west"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="RuleType">
-    <eLiterals name="MULTIPLY" literal="multiply"/>
+    <eLiterals name="COME_ALIVE" literal="come_alive"/>
     <eLiterals name="STAY" value="1" literal="stay"/>
     <eLiterals name="DIE" value="2" literal="die"/>
   </eClassifiers>

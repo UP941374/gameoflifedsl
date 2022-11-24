@@ -13,7 +13,7 @@
       <genEnumLiterals ecoreEnumLiteral="TasksDSL.ecore#//Direction/WEST"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="TasksDSL.ecore#//RuleType">
-      <genEnumLiterals ecoreEnumLiteral="TasksDSL.ecore#//RuleType/MULTIPLY"/>
+      <genEnumLiterals ecoreEnumLiteral="TasksDSL.ecore#//RuleType/COME_ALIVE"/>
       <genEnumLiterals ecoreEnumLiteral="TasksDSL.ecore#//RuleType/STAY"/>
       <genEnumLiterals ecoreEnumLiteral="TasksDSL.ecore#//RuleType/DIE"/>
     </genEnums>

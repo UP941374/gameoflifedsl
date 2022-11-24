@@ -21,14 +21,14 @@ import org.eclipse.emf.common.util.Enumerator;
 public enum RuleType implements Enumerator
 {
   /**
-   * The '<em><b>MULTIPLY</b></em>' literal object.
+   * The '<em><b>COME ALIVE</b></em>' literal object.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #MULTIPLY_VALUE
+   * @see #COME_ALIVE_VALUE
    * @generated
    * @ordered
    */
-  MULTIPLY(0, "MULTIPLY", "multiply"),
+  COME_ALIVE(0, "COME_ALIVE", "come_alive"),
 
   /**
    * The '<em><b>STAY</b></em>' literal object.
@@ -51,15 +51,15 @@ public enum RuleType implements Enumerator
   DIE(2, "DIE", "die");
 
   /**
-   * The '<em><b>MULTIPLY</b></em>' literal value.
+   * The '<em><b>COME ALIVE</b></em>' literal value.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #MULTIPLY
-   * @model literal="multiply"
+   * @see #COME_ALIVE
+   * @model literal="come_alive"
    * @generated
    * @ordered
    */
-  public static final int MULTIPLY_VALUE = 0;
+  public static final int COME_ALIVE_VALUE = 0;
 
   /**
    * The '<em><b>STAY</b></em>' literal value.
@@ -92,7 +92,7 @@ public enum RuleType implements Enumerator
   private static final RuleType[] VALUES_ARRAY =
     new RuleType[]
     {
-      MULTIPLY,
+      COME_ALIVE,
       STAY,
       DIE,
     };
@@ -159,7 +159,7 @@ public enum RuleType implements Enumerator
   {
     switch (value)
     {
-      case MULTIPLY_VALUE: return MULTIPLY;
+      case COME_ALIVE_VALUE: return COME_ALIVE;
       case STAY_VALUE: return STAY;
       case DIE_VALUE: return DIE;
     }

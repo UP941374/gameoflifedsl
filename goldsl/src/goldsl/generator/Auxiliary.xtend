@@ -1,6 +1,5 @@
 package goldsl.generator
 
-import goldsl.tasksDSL.Cell
 import goldsl.tasksDSL.Direction
 import goldsl.tasksDSL.FillCell
 import goldsl.tasksDSL.GameOfLife
@@ -28,21 +27,7 @@ class TempCell {
 }
 
 class Auxiliary {
-// generate a list of individual cells
-//	def static List<NormalCell> getCells(GameOfLife root) {
-//		var List<FillCell> cellsList2 = new ArrayList<FillCell>();
-//		var List<Cell> h = new ArrayList<Cell>();
-//
-////		cellsList = h.nCells;
-////		for (var i = 0; i < root.cells.length(); i++) {
-////			// create normal cells from fillCells
-////			for(hoi:root.cells.get(i).fillCells){
-////				cellsList2.add(hoi);				
-////			} 			
-////		}
-//		return h;
-//
-//	}
+
 	def static List<NormalCell> getNormalCells(GameOfLife root) {
 		var List<NormalCell> nCellsList = new ArrayList<NormalCell>();
 
@@ -89,34 +74,6 @@ class Auxiliary {
 		return nCellsList;
 	}
 
-//	def static List<Cells> getMultiCells(Gameoflife root) {
-//		var List<Cells> cellsList = new ArrayList<Cells>();
-//		cellsList = root.multiCells;
-//
-//		var List<Cell> transformedCells = new ArrayList<Cell>();
-//		for (mc : cellsList) {
-//			switch (mc.dir) {
-//				case (Direction::NORTH): {
-////					transformedCells.add();
-//				}
-//				case (Direction::EAST): {
-//				}
-//				case (Direction::SOUTH): {
-//				}
-//				case (Direction::WEST): {
-//				}
-//			}
-//		}
-//
-//		return cellsList;
-//	}
-//
-//	def static List<FillCell> getFillCells(Gameoflife root) {
-//		var List<FillCell> cellsList = new ArrayList<FillCell>();
-//		cellsList = root.fillCells;
-//
-//		return cellsList;
-//	}
 	def static List<Rule> getRules(GameOfLife root) {
 		var List<Rule> rulesList = new ArrayList<Rule>();
 		rulesList = root.rules;

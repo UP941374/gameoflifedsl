@@ -40,7 +40,7 @@ public class RuleImpl extends MinimalEObjectImpl.Container implements Rule
    * @generated
    * @ordered
    */
-  protected static final RuleType TYPE_EDEFAULT = RuleType.MULTIPLY;
+  protected static final RuleType TYPE_EDEFAULT = RuleType.COME_ALIVE;
 
   /**
    * The cached value of the '{@link #getType() <em>Type</em>}' attribute.

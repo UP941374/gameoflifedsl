@@ -501,7 +501,7 @@ public class TasksDSLPackageImpl extends EPackageImpl implements TasksDSLPackage
     addEEnumLiteral(directionEEnum, Direction.WEST);
 
     initEEnum(ruleTypeEEnum, RuleType.class, "RuleType");
-    addEEnumLiteral(ruleTypeEEnum, RuleType.MULTIPLY);
+    addEEnumLiteral(ruleTypeEEnum, RuleType.COME_ALIVE);
     addEEnumLiteral(ruleTypeEEnum, RuleType.STAY);
     addEEnumLiteral(ruleTypeEEnum, RuleType.DIE);
 

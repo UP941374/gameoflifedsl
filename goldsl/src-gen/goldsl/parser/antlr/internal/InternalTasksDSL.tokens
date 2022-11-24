@@ -8,10 +8,10 @@
 'Rule'=18
 '['=12
 ']'=14
+'come_alive'=23
 'die'=25
 'east'=20
 'fillCell:'=13
-'multiply'=23
 'north'=19
 'south'=21
 'stay'=24

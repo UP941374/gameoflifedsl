@@ -22,7 +22,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalTasksDSLParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_INT", "RULE_ID", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'Cells'", "'['", "'fillCell:'", "']'", "'('", "','", "')'", "'Rule'", "'north'", "'east'", "'south'", "'west'", "'multiply'", "'stay'", "'die'", "'>'", "'='", "'<'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_INT", "RULE_ID", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'Cells'", "'['", "'fillCell:'", "']'", "'('", "','", "')'", "'Rule'", "'north'", "'east'", "'south'", "'west'", "'come_alive'", "'stay'", "'die'", "'>'", "'='", "'<'"
     };
     public static final int RULE_STRING=6;
     public static final int RULE_SL_COMMENT=8;
@@ -1154,7 +1154,7 @@ public class InternalTasksDSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleRuleType"
-    // InternalTasksDSL.g:503:1: ruleRuleType returns [Enumerator current=null] : ( (enumLiteral_0= 'multiply' ) | (enumLiteral_1= 'stay' ) | (enumLiteral_2= 'die' ) ) ;
+    // InternalTasksDSL.g:503:1: ruleRuleType returns [Enumerator current=null] : ( (enumLiteral_0= 'come_alive' ) | (enumLiteral_1= 'stay' ) | (enumLiteral_2= 'die' ) ) ;
     public final Enumerator ruleRuleType() throws RecognitionException {
         Enumerator current = null;
 
@@ -1166,10 +1166,10 @@ public class InternalTasksDSLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalTasksDSL.g:509:2: ( ( (enumLiteral_0= 'multiply' ) | (enumLiteral_1= 'stay' ) | (enumLiteral_2= 'die' ) ) )
-            // InternalTasksDSL.g:510:2: ( (enumLiteral_0= 'multiply' ) | (enumLiteral_1= 'stay' ) | (enumLiteral_2= 'die' ) )
+            // InternalTasksDSL.g:509:2: ( ( (enumLiteral_0= 'come_alive' ) | (enumLiteral_1= 'stay' ) | (enumLiteral_2= 'die' ) ) )
+            // InternalTasksDSL.g:510:2: ( (enumLiteral_0= 'come_alive' ) | (enumLiteral_1= 'stay' ) | (enumLiteral_2= 'die' ) )
             {
-            // InternalTasksDSL.g:510:2: ( (enumLiteral_0= 'multiply' ) | (enumLiteral_1= 'stay' ) | (enumLiteral_2= 'die' ) )
+            // InternalTasksDSL.g:510:2: ( (enumLiteral_0= 'come_alive' ) | (enumLiteral_1= 'stay' ) | (enumLiteral_2= 'die' ) )
             int alt6=3;
             switch ( input.LA(1) ) {
             case 23:
@@ -1196,15 +1196,15 @@ public class InternalTasksDSLParser extends AbstractInternalAntlrParser {
 
             switch (alt6) {
                 case 1 :
-                    // InternalTasksDSL.g:511:3: (enumLiteral_0= 'multiply' )
+                    // InternalTasksDSL.g:511:3: (enumLiteral_0= 'come_alive' )
                     {
-                    // InternalTasksDSL.g:511:3: (enumLiteral_0= 'multiply' )
-                    // InternalTasksDSL.g:512:4: enumLiteral_0= 'multiply'
+                    // InternalTasksDSL.g:511:3: (enumLiteral_0= 'come_alive' )
+                    // InternalTasksDSL.g:512:4: enumLiteral_0= 'come_alive'
                     {
                     enumLiteral_0=(Token)match(input,23,FOLLOW_2); 
 
-                    				current = grammarAccess.getRuleTypeAccess().getMULTIPLYEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
-                    				newLeafNode(enumLiteral_0, grammarAccess.getRuleTypeAccess().getMULTIPLYEnumLiteralDeclaration_0());
+                    				current = grammarAccess.getRuleTypeAccess().getCOME_ALIVEEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+                    				newLeafNode(enumLiteral_0, grammarAccess.getRuleTypeAccess().getCOME_ALIVEEnumLiteralDeclaration_0());
                     			
 
                     }

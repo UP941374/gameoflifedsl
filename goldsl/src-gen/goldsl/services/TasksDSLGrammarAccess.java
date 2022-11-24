@@ -344,30 +344,30 @@ public class TasksDSLGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	public class RuleTypeElements extends AbstractElementFinder.AbstractEnumRuleElementFinder {
 		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "goldsl.TasksDSL.RuleType");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final EnumLiteralDeclaration cMULTIPLYEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
-		private final Keyword cMULTIPLYMultiplyKeyword_0_0 = (Keyword)cMULTIPLYEnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cCOME_ALIVEEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cCOME_ALIVECome_aliveKeyword_0_0 = (Keyword)cCOME_ALIVEEnumLiteralDeclaration_0.eContents().get(0);
 		private final EnumLiteralDeclaration cSTAYEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
 		private final Keyword cSTAYStayKeyword_1_0 = (Keyword)cSTAYEnumLiteralDeclaration_1.eContents().get(0);
 		private final EnumLiteralDeclaration cDIEEnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
 		private final Keyword cDIEDieKeyword_2_0 = (Keyword)cDIEEnumLiteralDeclaration_2.eContents().get(0);
 		
 		//enum RuleType:
-		//    MULTIPLY = 'multiply' |
+		//    COME_ALIVE = 'come_alive' |
 		//    STAY = 'stay' |
 		//    DIE = 'die'
 		//;
 		public EnumRule getRule() { return rule; }
 		
-		//MULTIPLY = 'multiply' |
+		//COME_ALIVE = 'come_alive' |
 		//STAY = 'stay' |
 		//DIE = 'die'
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//MULTIPLY = 'multiply'
-		public EnumLiteralDeclaration getMULTIPLYEnumLiteralDeclaration_0() { return cMULTIPLYEnumLiteralDeclaration_0; }
+		//COME_ALIVE = 'come_alive'
+		public EnumLiteralDeclaration getCOME_ALIVEEnumLiteralDeclaration_0() { return cCOME_ALIVEEnumLiteralDeclaration_0; }
 		
-		//'multiply'
-		public Keyword getMULTIPLYMultiplyKeyword_0_0() { return cMULTIPLYMultiplyKeyword_0_0; }
+		//'come_alive'
+		public Keyword getCOME_ALIVECome_aliveKeyword_0_0() { return cCOME_ALIVECome_aliveKeyword_0_0; }
 		
 		//STAY = 'stay'
 		public EnumLiteralDeclaration getSTAYEnumLiteralDeclaration_1() { return cSTAYEnumLiteralDeclaration_1; }
@@ -584,7 +584,7 @@ public class TasksDSLGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	}
 	
 	//enum RuleType:
-	//    MULTIPLY = 'multiply' |
+	//    COME_ALIVE = 'come_alive' |
 	//    STAY = 'stay' |
 	//    DIE = 'die'
 	//;
