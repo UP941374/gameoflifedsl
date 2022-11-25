@@ -17,15 +17,9 @@ import org.eclipse.xtext.generator.IGeneratorContext
 class TasksDSLGenerator extends AbstractGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-//		fsa.generateFile('greetings.txt', 'People to greet: ' + 
-//			resource.allContents
-//				.filter(Greeting)
-//				.map[name]
-//				.join(', '))
 		val root = resource.allContents.head as GameOfLife;
 		if (root !== null) {
 			var path = "../src/GameOfLife/";
-//			JavaGenerator.toJava(root);
 			fsa.generateFile(path+"RulesOfLife.java", JavaGenerator.toJava(root))
 		}
 	}

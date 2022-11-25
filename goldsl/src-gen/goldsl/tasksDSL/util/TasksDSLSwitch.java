@@ -80,6 +80,13 @@ public class TasksDSLSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case TasksDSLPackage.GRID:
+      {
+        Grid grid = (Grid)theEObject;
+        T result = caseGrid(grid);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case TasksDSLPackage.CELL:
       {
         Cell cell = (Cell)theEObject;
@@ -124,6 +131,22 @@ public class TasksDSLSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseGameOfLife(GameOfLife object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Grid</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Grid</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseGrid(Grid object)
   {
     return null;
   }

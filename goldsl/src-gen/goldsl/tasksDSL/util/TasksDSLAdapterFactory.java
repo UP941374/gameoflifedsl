@@ -81,6 +81,11 @@ public class TasksDSLAdapterFactory extends AdapterFactoryImpl
         return createGameOfLifeAdapter();
       }
       @Override
+      public Adapter caseGrid(Grid object)
+      {
+        return createGridAdapter();
+      }
+      @Override
       public Adapter caseCell(Cell object)
       {
         return createCellAdapter();
@@ -133,6 +138,21 @@ public class TasksDSLAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createGameOfLifeAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link goldsl.tasksDSL.Grid <em>Grid</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see goldsl.tasksDSL.Grid
+   * @generated
+   */
+  public Adapter createGridAdapter()
   {
     return null;
   }

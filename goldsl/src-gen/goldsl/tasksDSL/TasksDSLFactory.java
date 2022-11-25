@@ -33,6 +33,15 @@ public interface TasksDSLFactory extends EFactory
   GameOfLife createGameOfLife();
 
   /**
+   * Returns a new object of class '<em>Grid</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Grid</em>'.
+   * @generated
+   */
+  Grid createGrid();
+
+  /**
    * Returns a new object of class '<em>Cell</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

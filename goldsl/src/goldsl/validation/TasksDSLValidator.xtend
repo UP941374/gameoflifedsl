@@ -3,14 +3,18 @@
  */
 package goldsl.validation
 
+import goldsl.tasksDSL.FillCell
+import goldsl.tasksDSL.Grid
+import goldsl.tasksDSL.Rule
+import org.eclipse.xtext.validation.Check
 
 /**
  * This class contains custom validation rules. 
- *
+ * 
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#validation
  */
 class TasksDSLValidator extends AbstractTasksDSLValidator {
-	
+
 //	public static val INVALID_NAME = 'invalidName'
 //
 //	@Check
@@ -21,5 +25,34 @@ class TasksDSLValidator extends AbstractTasksDSLValidator {
 //					INVALID_NAME)
 //		}
 //	}
+	@Check
+	def checkFillCellsAmount(FillCell fillCell) {
+		if (!(fillCell.repAmount > 1)){
+			warning("The repetition amount should be greater than 1", null);
+		}
+	}
 	
+	@Check
+	def checkSurroundingssAmount(Rule rule) {
+		if (rule.n > 8 || rule.n < 0){
+			error("A cell can only have between 0 and 8 neighbours", null);
+		}
+	}
+	
+	@Check
+	def checkGridIsSpecified(Grid grid) {
+		if (grid === null) {
+			info("You can specify your own grid size with 'Grid width: x height: y'", null);
+		}
+	}
+	
+	@Check
+	def checkCellAreWithinBoundaries(Grid grid) {
+		var boundary = 200;
+		if (grid.width < boundary || grid.height < boundary){
+			error("Grid size is too small", null);
+		}
+		
+	}
+
 }

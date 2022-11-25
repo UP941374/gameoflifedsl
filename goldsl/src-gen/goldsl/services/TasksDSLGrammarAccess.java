@@ -28,11 +28,15 @@ public class TasksDSLGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "goldsl.TasksDSL.GameOfLife");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Group cGroup_0 = (Group)cGroup.eContents().get(0);
-		private final Keyword cCellsKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
-		private final Assignment cCellsAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
-		private final RuleCall cCellsCellParserRuleCall_0_1_0 = (RuleCall)cCellsAssignment_0_1.eContents().get(0);
-		private final Assignment cRulesAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cRulesRuleParserRuleCall_1_0 = (RuleCall)cRulesAssignment_1.eContents().get(0);
+		private final Keyword cGridKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
+		private final Assignment cGridAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
+		private final RuleCall cGridGridParserRuleCall_0_1_0 = (RuleCall)cGridAssignment_0_1.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Keyword cCellsKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final Assignment cCellsAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cCellsCellParserRuleCall_1_1_0 = (RuleCall)cCellsAssignment_1_1.eContents().get(0);
+		private final Assignment cRulesAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cRulesRuleParserRuleCall_2_0 = (RuleCall)cRulesAssignment_2.eContents().get(0);
 		
 		////Gameoflife:
 		////    cells+=Cell*
@@ -71,32 +75,84 @@ public class TasksDSLGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		////    'Rule' type=RuleType sign=CompareSign  n=INT
 		////;
 		//GameOfLife:
+		//    ('Grid' grid=Grid)?
 		//    ("Cells" cells+=Cell+)?
 		//    rules += Rule*
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
+		//('Grid' grid=Grid)?
 		//("Cells" cells+=Cell+)?
 		//rules += Rule*
 		public Group getGroup() { return cGroup; }
 		
-		//("Cells" cells+=Cell+)?
+		//('Grid' grid=Grid)?
 		public Group getGroup_0() { return cGroup_0; }
 		
+		//'Grid'
+		public Keyword getGridKeyword_0_0() { return cGridKeyword_0_0; }
+		
+		//grid=Grid
+		public Assignment getGridAssignment_0_1() { return cGridAssignment_0_1; }
+		
+		//Grid
+		public RuleCall getGridGridParserRuleCall_0_1_0() { return cGridGridParserRuleCall_0_1_0; }
+		
+		//("Cells" cells+=Cell+)?
+		public Group getGroup_1() { return cGroup_1; }
+		
 		//"Cells"
-		public Keyword getCellsKeyword_0_0() { return cCellsKeyword_0_0; }
+		public Keyword getCellsKeyword_1_0() { return cCellsKeyword_1_0; }
 		
 		//cells+=Cell+
-		public Assignment getCellsAssignment_0_1() { return cCellsAssignment_0_1; }
+		public Assignment getCellsAssignment_1_1() { return cCellsAssignment_1_1; }
 		
 		//Cell
-		public RuleCall getCellsCellParserRuleCall_0_1_0() { return cCellsCellParserRuleCall_0_1_0; }
+		public RuleCall getCellsCellParserRuleCall_1_1_0() { return cCellsCellParserRuleCall_1_1_0; }
 		
 		//rules += Rule*
-		public Assignment getRulesAssignment_1() { return cRulesAssignment_1; }
+		public Assignment getRulesAssignment_2() { return cRulesAssignment_2; }
 		
 		//Rule
-		public RuleCall getRulesRuleParserRuleCall_1_0() { return cRulesRuleParserRuleCall_1_0; }
+		public RuleCall getRulesRuleParserRuleCall_2_0() { return cRulesRuleParserRuleCall_2_0; }
+	}
+	public class GridElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "goldsl.TasksDSL.Grid");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cWidthKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cWidthAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cWidthINTTerminalRuleCall_1_0 = (RuleCall)cWidthAssignment_1.eContents().get(0);
+		private final Keyword cHeightKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cHeightAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cHeightINTTerminalRuleCall_3_0 = (RuleCall)cHeightAssignment_3.eContents().get(0);
+		
+		//Grid:
+		//    'width:' width=INT
+		//    'height:' height=INT
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'width:' width=INT
+		//'height:' height=INT
+		public Group getGroup() { return cGroup; }
+		
+		//'width:'
+		public Keyword getWidthKeyword_0() { return cWidthKeyword_0; }
+		
+		//width=INT
+		public Assignment getWidthAssignment_1() { return cWidthAssignment_1; }
+		
+		//INT
+		public RuleCall getWidthINTTerminalRuleCall_1_0() { return cWidthINTTerminalRuleCall_1_0; }
+		
+		//'height:'
+		public Keyword getHeightKeyword_2() { return cHeightKeyword_2; }
+		
+		//height=INT
+		public Assignment getHeightAssignment_3() { return cHeightAssignment_3; }
+		
+		//INT
+		public RuleCall getHeightINTTerminalRuleCall_3_0() { return cHeightINTTerminalRuleCall_3_0; }
 	}
 	public class CellElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "goldsl.TasksDSL.Cell");
@@ -387,19 +443,19 @@ public class TasksDSLGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		private final EnumLiteralDeclaration cBIGGER_THANEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
 		private final Keyword cBIGGER_THANGreaterThanSignKeyword_0_0 = (Keyword)cBIGGER_THANEnumLiteralDeclaration_0.eContents().get(0);
 		private final EnumLiteralDeclaration cEQUALEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
-		private final Keyword cEQUALEqualsSignKeyword_1_0 = (Keyword)cEQUALEnumLiteralDeclaration_1.eContents().get(0);
+		private final Keyword cEQUALEqualsSignEqualsSignKeyword_1_0 = (Keyword)cEQUALEnumLiteralDeclaration_1.eContents().get(0);
 		private final EnumLiteralDeclaration cSMALLER_THANEnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
 		private final Keyword cSMALLER_THANLessThanSignKeyword_2_0 = (Keyword)cSMALLER_THANEnumLiteralDeclaration_2.eContents().get(0);
 		
 		//enum CompareSign:
 		//    BIGGER_THAN = '>' |
-		//    EQUAL = '=' |
+		//    EQUAL = '==' |
 		//    SMALLER_THAN = '<'
 		//;
 		public EnumRule getRule() { return rule; }
 		
 		//BIGGER_THAN = '>' |
-		//EQUAL = '=' |
+		//EQUAL = '==' |
 		//SMALLER_THAN = '<'
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
@@ -409,11 +465,11 @@ public class TasksDSLGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//'>'
 		public Keyword getBIGGER_THANGreaterThanSignKeyword_0_0() { return cBIGGER_THANGreaterThanSignKeyword_0_0; }
 		
-		//EQUAL = '='
+		//EQUAL = '=='
 		public EnumLiteralDeclaration getEQUALEnumLiteralDeclaration_1() { return cEQUALEnumLiteralDeclaration_1; }
 		
-		//'='
-		public Keyword getEQUALEqualsSignKeyword_1_0() { return cEQUALEqualsSignKeyword_1_0; }
+		//'=='
+		public Keyword getEQUALEqualsSignEqualsSignKeyword_1_0() { return cEQUALEqualsSignEqualsSignKeyword_1_0; }
 		
 		//SMALLER_THAN = '<'
 		public EnumLiteralDeclaration getSMALLER_THANEnumLiteralDeclaration_2() { return cSMALLER_THANEnumLiteralDeclaration_2; }
@@ -423,6 +479,7 @@ public class TasksDSLGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	}
 	
 	private final GameOfLifeElements pGameOfLife;
+	private final GridElements pGrid;
 	private final CellElements pCell;
 	private final NormalCellElements pNormalCell;
 	private final FillCellElements pFillCell;
@@ -441,6 +498,7 @@ public class TasksDSLGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		this.grammar = internalFindGrammar(grammarProvider);
 		this.gaTerminals = gaTerminals;
 		this.pGameOfLife = new GameOfLifeElements();
+		this.pGrid = new GridElements();
 		this.pCell = new CellElements();
 		this.pNormalCell = new NormalCellElements();
 		this.pFillCell = new FillCellElements();
@@ -514,6 +572,7 @@ public class TasksDSLGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	////    'Rule' type=RuleType sign=CompareSign  n=INT
 	////;
 	//GameOfLife:
+	//    ('Grid' grid=Grid)?
 	//    ("Cells" cells+=Cell+)?
 	//    rules += Rule*
 	//;
@@ -523,6 +582,18 @@ public class TasksDSLGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	
 	public ParserRule getGameOfLifeRule() {
 		return getGameOfLifeAccess().getRule();
+	}
+	
+	//Grid:
+	//    'width:' width=INT
+	//    'height:' height=INT
+	//;
+	public GridElements getGridAccess() {
+		return pGrid;
+	}
+	
+	public ParserRule getGridRule() {
+		return getGridAccess().getRule();
 	}
 	
 	//Cell:
@@ -598,7 +669,7 @@ public class TasksDSLGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	
 	//enum CompareSign:
 	//    BIGGER_THAN = '>' |
-	//    EQUAL = '=' |
+	//    EQUAL = '==' |
 	//    SMALLER_THAN = '<'
 	//;
 	public CompareSignElements getCompareSignAccess() {

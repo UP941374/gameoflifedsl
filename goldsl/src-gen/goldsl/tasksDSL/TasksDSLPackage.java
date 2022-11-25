@@ -69,13 +69,22 @@ public interface TasksDSLPackage extends EPackage
   int GAME_OF_LIFE = 0;
 
   /**
+   * The feature id for the '<em><b>Grid</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_OF_LIFE__GRID = 0;
+
+  /**
    * The feature id for the '<em><b>Cells</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int GAME_OF_LIFE__CELLS = 0;
+  int GAME_OF_LIFE__CELLS = 1;
 
   /**
    * The feature id for the '<em><b>Rules</b></em>' containment reference list.
@@ -84,7 +93,7 @@ public interface TasksDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_OF_LIFE__RULES = 1;
+  int GAME_OF_LIFE__RULES = 2;
 
   /**
    * The number of structural features of the '<em>Game Of Life</em>' class.
@@ -93,7 +102,44 @@ public interface TasksDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_OF_LIFE_FEATURE_COUNT = 2;
+  int GAME_OF_LIFE_FEATURE_COUNT = 3;
+
+  /**
+   * The meta object id for the '{@link goldsl.tasksDSL.impl.GridImpl <em>Grid</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see goldsl.tasksDSL.impl.GridImpl
+   * @see goldsl.tasksDSL.impl.TasksDSLPackageImpl#getGrid()
+   * @generated
+   */
+  int GRID = 1;
+
+  /**
+   * The feature id for the '<em><b>Width</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GRID__WIDTH = 0;
+
+  /**
+   * The feature id for the '<em><b>Height</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GRID__HEIGHT = 1;
+
+  /**
+   * The number of structural features of the '<em>Grid</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GRID_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link goldsl.tasksDSL.impl.CellImpl <em>Cell</em>}' class.
@@ -103,7 +149,7 @@ public interface TasksDSLPackage extends EPackage
    * @see goldsl.tasksDSL.impl.TasksDSLPackageImpl#getCell()
    * @generated
    */
-  int CELL = 1;
+  int CELL = 2;
 
   /**
    * The feature id for the '<em><b>NCells</b></em>' containment reference list.
@@ -140,7 +186,7 @@ public interface TasksDSLPackage extends EPackage
    * @see goldsl.tasksDSL.impl.TasksDSLPackageImpl#getNormalCell()
    * @generated
    */
-  int NORMAL_CELL = 2;
+  int NORMAL_CELL = 3;
 
   /**
    * The feature id for the '<em><b>X</b></em>' attribute.
@@ -177,7 +223,7 @@ public interface TasksDSLPackage extends EPackage
    * @see goldsl.tasksDSL.impl.TasksDSLPackageImpl#getFillCell()
    * @generated
    */
-  int FILL_CELL = 3;
+  int FILL_CELL = 4;
 
   /**
    * The feature id for the '<em><b>X</b></em>' attribute.
@@ -232,7 +278,7 @@ public interface TasksDSLPackage extends EPackage
    * @see goldsl.tasksDSL.impl.TasksDSLPackageImpl#getRule()
    * @generated
    */
-  int RULE = 4;
+  int RULE = 5;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -278,7 +324,7 @@ public interface TasksDSLPackage extends EPackage
    * @see goldsl.tasksDSL.impl.TasksDSLPackageImpl#getDirection()
    * @generated
    */
-  int DIRECTION = 5;
+  int DIRECTION = 6;
 
   /**
    * The meta object id for the '{@link goldsl.tasksDSL.RuleType <em>Rule Type</em>}' enum.
@@ -288,7 +334,7 @@ public interface TasksDSLPackage extends EPackage
    * @see goldsl.tasksDSL.impl.TasksDSLPackageImpl#getRuleType()
    * @generated
    */
-  int RULE_TYPE = 6;
+  int RULE_TYPE = 7;
 
   /**
    * The meta object id for the '{@link goldsl.tasksDSL.CompareSign <em>Compare Sign</em>}' enum.
@@ -298,7 +344,7 @@ public interface TasksDSLPackage extends EPackage
    * @see goldsl.tasksDSL.impl.TasksDSLPackageImpl#getCompareSign()
    * @generated
    */
-  int COMPARE_SIGN = 7;
+  int COMPARE_SIGN = 8;
 
 
   /**
@@ -310,6 +356,17 @@ public interface TasksDSLPackage extends EPackage
    * @generated
    */
   EClass getGameOfLife();
+
+  /**
+   * Returns the meta object for the containment reference '{@link goldsl.tasksDSL.GameOfLife#getGrid <em>Grid</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Grid</em>'.
+   * @see goldsl.tasksDSL.GameOfLife#getGrid()
+   * @see #getGameOfLife()
+   * @generated
+   */
+  EReference getGameOfLife_Grid();
 
   /**
    * Returns the meta object for the containment reference list '{@link goldsl.tasksDSL.GameOfLife#getCells <em>Cells</em>}'.
@@ -332,6 +389,38 @@ public interface TasksDSLPackage extends EPackage
    * @generated
    */
   EReference getGameOfLife_Rules();
+
+  /**
+   * Returns the meta object for class '{@link goldsl.tasksDSL.Grid <em>Grid</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Grid</em>'.
+   * @see goldsl.tasksDSL.Grid
+   * @generated
+   */
+  EClass getGrid();
+
+  /**
+   * Returns the meta object for the attribute '{@link goldsl.tasksDSL.Grid#getWidth <em>Width</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Width</em>'.
+   * @see goldsl.tasksDSL.Grid#getWidth()
+   * @see #getGrid()
+   * @generated
+   */
+  EAttribute getGrid_Width();
+
+  /**
+   * Returns the meta object for the attribute '{@link goldsl.tasksDSL.Grid#getHeight <em>Height</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Height</em>'.
+   * @see goldsl.tasksDSL.Grid#getHeight()
+   * @see #getGrid()
+   * @generated
+   */
+  EAttribute getGrid_Height();
 
   /**
    * Returns the meta object for class '{@link goldsl.tasksDSL.Cell <em>Cell</em>}'.
@@ -558,6 +647,14 @@ public interface TasksDSLPackage extends EPackage
     EClass GAME_OF_LIFE = eINSTANCE.getGameOfLife();
 
     /**
+     * The meta object literal for the '<em><b>Grid</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference GAME_OF_LIFE__GRID = eINSTANCE.getGameOfLife_Grid();
+
+    /**
      * The meta object literal for the '<em><b>Cells</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -572,6 +669,32 @@ public interface TasksDSLPackage extends EPackage
      * @generated
      */
     EReference GAME_OF_LIFE__RULES = eINSTANCE.getGameOfLife_Rules();
+
+    /**
+     * The meta object literal for the '{@link goldsl.tasksDSL.impl.GridImpl <em>Grid</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see goldsl.tasksDSL.impl.GridImpl
+     * @see goldsl.tasksDSL.impl.TasksDSLPackageImpl#getGrid()
+     * @generated
+     */
+    EClass GRID = eINSTANCE.getGrid();
+
+    /**
+     * The meta object literal for the '<em><b>Width</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GRID__WIDTH = eINSTANCE.getGrid_Width();
+
+    /**
+     * The meta object literal for the '<em><b>Height</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GRID__HEIGHT = eINSTANCE.getGrid_Height();
 
     /**
      * The meta object literal for the '{@link goldsl.tasksDSL.impl.CellImpl <em>Cell</em>}' class.

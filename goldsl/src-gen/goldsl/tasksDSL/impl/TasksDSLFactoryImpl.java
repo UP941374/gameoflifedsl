@@ -67,6 +67,7 @@ public class TasksDSLFactoryImpl extends EFactoryImpl implements TasksDSLFactory
     switch (eClass.getClassifierID())
     {
       case TasksDSLPackage.GAME_OF_LIFE: return createGameOfLife();
+      case TasksDSLPackage.GRID: return createGrid();
       case TasksDSLPackage.CELL: return createCell();
       case TasksDSLPackage.NORMAL_CELL: return createNormalCell();
       case TasksDSLPackage.FILL_CELL: return createFillCell();
@@ -128,6 +129,18 @@ public class TasksDSLFactoryImpl extends EFactoryImpl implements TasksDSLFactory
   {
     GameOfLifeImpl gameOfLife = new GameOfLifeImpl();
     return gameOfLife;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Grid createGrid()
+  {
+    GridImpl grid = new GridImpl();
+    return grid;
   }
 
   /**

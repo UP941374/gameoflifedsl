@@ -23,8 +23,13 @@
       <genEnumLiterals ecoreEnumLiteral="TasksDSL.ecore#//CompareSign/SMALLER_THAN"/>
     </genEnums>
     <genClasses ecoreClass="TasksDSL.ecore#//GameOfLife">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TasksDSL.ecore#//GameOfLife/grid"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TasksDSL.ecore#//GameOfLife/cells"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TasksDSL.ecore#//GameOfLife/rules"/>
+    </genClasses>
+    <genClasses ecoreClass="TasksDSL.ecore#//Grid">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TasksDSL.ecore#//Grid/width"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TasksDSL.ecore#//Grid/height"/>
     </genClasses>
     <genClasses ecoreClass="TasksDSL.ecore#//Cell">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TasksDSL.ecore#//Cell/nCells"/>

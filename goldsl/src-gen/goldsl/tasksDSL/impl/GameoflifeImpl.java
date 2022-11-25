@@ -5,11 +5,13 @@ package goldsl.tasksDSL.impl;
 
 import goldsl.tasksDSL.Cell;
 import goldsl.tasksDSL.GameOfLife;
+import goldsl.tasksDSL.Grid;
 import goldsl.tasksDSL.Rule;
 import goldsl.tasksDSL.TasksDSLPackage;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
@@ -17,6 +19,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
@@ -30,6 +33,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link goldsl.tasksDSL.impl.GameOfLifeImpl#getGrid <em>Grid</em>}</li>
  *   <li>{@link goldsl.tasksDSL.impl.GameOfLifeImpl#getCells <em>Cells</em>}</li>
  *   <li>{@link goldsl.tasksDSL.impl.GameOfLifeImpl#getRules <em>Rules</em>}</li>
  * </ul>
@@ -38,6 +42,16 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class GameOfLifeImpl extends MinimalEObjectImpl.Container implements GameOfLife
 {
+  /**
+   * The cached value of the '{@link #getGrid() <em>Grid</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getGrid()
+   * @generated
+   * @ordered
+   */
+  protected Grid grid;
+
   /**
    * The cached value of the '{@link #getCells() <em>Cells</em>}' containment reference list.
    * <!-- begin-user-doc -->
@@ -85,6 +99,56 @@ public class GameOfLifeImpl extends MinimalEObjectImpl.Container implements Game
    * @generated
    */
   @Override
+  public Grid getGrid()
+  {
+    return grid;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetGrid(Grid newGrid, NotificationChain msgs)
+  {
+    Grid oldGrid = grid;
+    grid = newGrid;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TasksDSLPackage.GAME_OF_LIFE__GRID, oldGrid, newGrid);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setGrid(Grid newGrid)
+  {
+    if (newGrid != grid)
+    {
+      NotificationChain msgs = null;
+      if (grid != null)
+        msgs = ((InternalEObject)grid).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TasksDSLPackage.GAME_OF_LIFE__GRID, null, msgs);
+      if (newGrid != null)
+        msgs = ((InternalEObject)newGrid).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - TasksDSLPackage.GAME_OF_LIFE__GRID, null, msgs);
+      msgs = basicSetGrid(newGrid, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, TasksDSLPackage.GAME_OF_LIFE__GRID, newGrid, newGrid));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EList<Cell> getCells()
   {
     if (cells == null)
@@ -119,6 +183,8 @@ public class GameOfLifeImpl extends MinimalEObjectImpl.Container implements Game
   {
     switch (featureID)
     {
+      case TasksDSLPackage.GAME_OF_LIFE__GRID:
+        return basicSetGrid(null, msgs);
       case TasksDSLPackage.GAME_OF_LIFE__CELLS:
         return ((InternalEList<?>)getCells()).basicRemove(otherEnd, msgs);
       case TasksDSLPackage.GAME_OF_LIFE__RULES:
@@ -137,6 +203,8 @@ public class GameOfLifeImpl extends MinimalEObjectImpl.Container implements Game
   {
     switch (featureID)
     {
+      case TasksDSLPackage.GAME_OF_LIFE__GRID:
+        return getGrid();
       case TasksDSLPackage.GAME_OF_LIFE__CELLS:
         return getCells();
       case TasksDSLPackage.GAME_OF_LIFE__RULES:
@@ -156,6 +224,9 @@ public class GameOfLifeImpl extends MinimalEObjectImpl.Container implements Game
   {
     switch (featureID)
     {
+      case TasksDSLPackage.GAME_OF_LIFE__GRID:
+        setGrid((Grid)newValue);
+        return;
       case TasksDSLPackage.GAME_OF_LIFE__CELLS:
         getCells().clear();
         getCells().addAll((Collection<? extends Cell>)newValue);
@@ -178,6 +249,9 @@ public class GameOfLifeImpl extends MinimalEObjectImpl.Container implements Game
   {
     switch (featureID)
     {
+      case TasksDSLPackage.GAME_OF_LIFE__GRID:
+        setGrid((Grid)null);
+        return;
       case TasksDSLPackage.GAME_OF_LIFE__CELLS:
         getCells().clear();
         return;
@@ -198,6 +272,8 @@ public class GameOfLifeImpl extends MinimalEObjectImpl.Container implements Game
   {
     switch (featureID)
     {
+      case TasksDSLPackage.GAME_OF_LIFE__GRID:
+        return grid != null;
       case TasksDSLPackage.GAME_OF_LIFE__CELLS:
         return cells != null && !cells.isEmpty();
       case TasksDSLPackage.GAME_OF_LIFE__RULES:

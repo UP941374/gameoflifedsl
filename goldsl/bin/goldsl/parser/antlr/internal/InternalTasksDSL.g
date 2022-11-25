@@ -78,16 +78,41 @@ ruleGameOfLife returns [EObject current=null]
 }:
 	(
 		(
-			otherlv_0='Cells'
+			otherlv_0='Grid'
 			{
-				newLeafNode(otherlv_0, grammarAccess.getGameOfLifeAccess().getCellsKeyword_0_0());
+				newLeafNode(otherlv_0, grammarAccess.getGameOfLifeAccess().getGridKeyword_0_0());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getGameOfLifeAccess().getCellsCellParserRuleCall_0_1_0());
+						newCompositeNode(grammarAccess.getGameOfLifeAccess().getGridGridParserRuleCall_0_1_0());
 					}
-					lv_cells_1_0=ruleCell
+					lv_grid_1_0=ruleGrid
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getGameOfLifeRule());
+						}
+						set(
+							$current,
+							"grid",
+							lv_grid_1_0,
+							"goldsl.TasksDSL.Grid");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)?
+		(
+			otherlv_2='Cells'
+			{
+				newLeafNode(otherlv_2, grammarAccess.getGameOfLifeAccess().getCellsKeyword_1_0());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getGameOfLifeAccess().getCellsCellParserRuleCall_1_1_0());
+					}
+					lv_cells_3_0=ruleCell
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getGameOfLifeRule());
@@ -95,7 +120,7 @@ ruleGameOfLife returns [EObject current=null]
 						add(
 							$current,
 							"cells",
-							lv_cells_1_0,
+							lv_cells_3_0,
 							"goldsl.TasksDSL.Cell");
 						afterParserOrEnumRuleCall();
 					}
@@ -105,9 +130,9 @@ ruleGameOfLife returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getGameOfLifeAccess().getRulesRuleParserRuleCall_1_0());
+					newCompositeNode(grammarAccess.getGameOfLifeAccess().getRulesRuleParserRuleCall_2_0());
 				}
-				lv_rules_2_0=ruleRule
+				lv_rules_4_0=ruleRule
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getGameOfLifeRule());
@@ -115,12 +140,75 @@ ruleGameOfLife returns [EObject current=null]
 					add(
 						$current,
 						"rules",
-						lv_rules_2_0,
+						lv_rules_4_0,
 						"goldsl.TasksDSL.Rule");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)*
+	)
+;
+
+// Entry rule entryRuleGrid
+entryRuleGrid returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getGridRule()); }
+	iv_ruleGrid=ruleGrid
+	{ $current=$iv_ruleGrid.current; }
+	EOF;
+
+// Rule Grid
+ruleGrid returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='width:'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getGridAccess().getWidthKeyword_0());
+		}
+		(
+			(
+				lv_width_1_0=RULE_INT
+				{
+					newLeafNode(lv_width_1_0, grammarAccess.getGridAccess().getWidthINTTerminalRuleCall_1_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getGridRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"width",
+						lv_width_1_0,
+						"org.eclipse.xtext.common.Terminals.INT");
+				}
+			)
+		)
+		otherlv_2='height:'
+		{
+			newLeafNode(otherlv_2, grammarAccess.getGridAccess().getHeightKeyword_2());
+		}
+		(
+			(
+				lv_height_3_0=RULE_INT
+				{
+					newLeafNode(lv_height_3_0, grammarAccess.getGridAccess().getHeightINTTerminalRuleCall_3_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getGridRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"height",
+						lv_height_3_0,
+						"org.eclipse.xtext.common.Terminals.INT");
+				}
+			)
+		)
 	)
 ;
 
@@ -552,7 +640,7 @@ ruleCompareSign returns [Enumerator current=null]
 		)
 		    |
 		(
-			enumLiteral_1='='
+			enumLiteral_1='=='
 			{
 				$current = grammarAccess.getCompareSignAccess().getEQUALEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
 				newLeafNode(enumLiteral_1, grammarAccess.getCompareSignAccess().getEQUALEnumLiteralDeclaration_1());

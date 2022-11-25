@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link goldsl.tasksDSL.GameOfLife#getGrid <em>Grid</em>}</li>
  *   <li>{@link goldsl.tasksDSL.GameOfLife#getCells <em>Cells</em>}</li>
  *   <li>{@link goldsl.tasksDSL.GameOfLife#getRules <em>Rules</em>}</li>
  * </ul>
@@ -26,6 +27,28 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface GameOfLife extends EObject
 {
+  /**
+   * Returns the value of the '<em><b>Grid</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Grid</em>' containment reference.
+   * @see #setGrid(Grid)
+   * @see goldsl.tasksDSL.TasksDSLPackage#getGameOfLife_Grid()
+   * @model containment="true"
+   * @generated
+   */
+  Grid getGrid();
+
+  /**
+   * Sets the value of the '{@link goldsl.tasksDSL.GameOfLife#getGrid <em>Grid</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Grid</em>' containment reference.
+   * @see #getGrid()
+   * @generated
+   */
+  void setGrid(Grid value);
+
   /**
    * Returns the value of the '<em><b>Cells</b></em>' containment reference list.
    * The list contents are of type {@link goldsl.tasksDSL.Cell}.

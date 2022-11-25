@@ -8,6 +8,7 @@ import goldsl.tasksDSL.CompareSign;
 import goldsl.tasksDSL.Direction;
 import goldsl.tasksDSL.FillCell;
 import goldsl.tasksDSL.GameOfLife;
+import goldsl.tasksDSL.Grid;
 import goldsl.tasksDSL.NormalCell;
 import goldsl.tasksDSL.Rule;
 import goldsl.tasksDSL.RuleType;
@@ -36,6 +37,13 @@ public class TasksDSLPackageImpl extends EPackageImpl implements TasksDSLPackage
    * @generated
    */
   private EClass gameOfLifeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass gridEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -165,7 +173,7 @@ public class TasksDSLPackageImpl extends EPackageImpl implements TasksDSLPackage
    * @generated
    */
   @Override
-  public EReference getGameOfLife_Cells()
+  public EReference getGameOfLife_Grid()
   {
     return (EReference)gameOfLifeEClass.getEStructuralFeatures().get(0);
   }
@@ -176,9 +184,53 @@ public class TasksDSLPackageImpl extends EPackageImpl implements TasksDSLPackage
    * @generated
    */
   @Override
-  public EReference getGameOfLife_Rules()
+  public EReference getGameOfLife_Cells()
   {
     return (EReference)gameOfLifeEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getGameOfLife_Rules()
+  {
+    return (EReference)gameOfLifeEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getGrid()
+  {
+    return gridEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getGrid_Width()
+  {
+    return (EAttribute)gridEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getGrid_Height()
+  {
+    return (EAttribute)gridEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -411,8 +463,13 @@ public class TasksDSLPackageImpl extends EPackageImpl implements TasksDSLPackage
 
     // Create classes and their features
     gameOfLifeEClass = createEClass(GAME_OF_LIFE);
+    createEReference(gameOfLifeEClass, GAME_OF_LIFE__GRID);
     createEReference(gameOfLifeEClass, GAME_OF_LIFE__CELLS);
     createEReference(gameOfLifeEClass, GAME_OF_LIFE__RULES);
+
+    gridEClass = createEClass(GRID);
+    createEAttribute(gridEClass, GRID__WIDTH);
+    createEAttribute(gridEClass, GRID__HEIGHT);
 
     cellEClass = createEClass(CELL);
     createEReference(cellEClass, CELL__NCELLS);
@@ -471,8 +528,13 @@ public class TasksDSLPackageImpl extends EPackageImpl implements TasksDSLPackage
 
     // Initialize classes and features; add operations and parameters
     initEClass(gameOfLifeEClass, GameOfLife.class, "GameOfLife", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getGameOfLife_Grid(), this.getGrid(), null, "grid", null, 0, 1, GameOfLife.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getGameOfLife_Cells(), this.getCell(), null, "cells", null, 0, -1, GameOfLife.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getGameOfLife_Rules(), this.getRule(), null, "rules", null, 0, -1, GameOfLife.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(gridEClass, Grid.class, "Grid", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getGrid_Width(), ecorePackage.getEInt(), "width", null, 0, 1, Grid.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getGrid_Height(), ecorePackage.getEInt(), "height", null, 0, 1, Grid.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(cellEClass, Cell.class, "Cell", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getCell_NCells(), this.getNormalCell(), null, "nCells", null, 0, -1, Cell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

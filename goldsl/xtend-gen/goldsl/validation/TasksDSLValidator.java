@@ -3,6 +3,11 @@
  */
 package goldsl.validation;
 
+import goldsl.tasksDSL.FillCell;
+import goldsl.tasksDSL.Grid;
+import goldsl.tasksDSL.Rule;
+import org.eclipse.xtext.validation.Check;
+
 /**
  * This class contains custom validation rules.
  * 
@@ -10,4 +15,35 @@ package goldsl.validation;
  */
 @SuppressWarnings("all")
 public class TasksDSLValidator extends AbstractTasksDSLValidator {
+  @Check
+  public void checkFillCellsAmount(final FillCell fillCell) {
+    int _repAmount = fillCell.getRepAmount();
+    boolean _greaterThan = (_repAmount > 1);
+    boolean _not = (!_greaterThan);
+    if (_not) {
+      this.warning("The repetition amount should be greater than 1", null);
+    }
+  }
+
+  @Check
+  public void checkSurroundingssAmount(final Rule rule) {
+    if (((rule.getN() > 8) || (rule.getN() < 0))) {
+      this.error("A cell can only have between 0 and 8 neighbours", null);
+    }
+  }
+
+  @Check
+  public void checkGridIsSpecified(final Grid grid) {
+    if ((grid == null)) {
+      this.info("You can specify your own grid size with \'Grid width: x height: y\'", null);
+    }
+  }
+
+  @Check
+  public void checkCellAreWithinBoundaries(final Grid grid) {
+    int boundary = 200;
+    if (((grid.getWidth() < boundary) || (grid.getHeight() < boundary))) {
+      this.error("Grid size is too small", null);
+    }
+  }
 }

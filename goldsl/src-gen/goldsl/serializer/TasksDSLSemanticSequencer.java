@@ -8,6 +8,7 @@ import goldsl.services.TasksDSLGrammarAccess;
 import goldsl.tasksDSL.Cell;
 import goldsl.tasksDSL.FillCell;
 import goldsl.tasksDSL.GameOfLife;
+import goldsl.tasksDSL.Grid;
 import goldsl.tasksDSL.NormalCell;
 import goldsl.tasksDSL.Rule;
 import goldsl.tasksDSL.TasksDSLPackage;
@@ -44,6 +45,9 @@ public class TasksDSLSemanticSequencer extends AbstractDelegatingSemanticSequenc
 				return; 
 			case TasksDSLPackage.GAME_OF_LIFE:
 				sequence_GameOfLife(context, (GameOfLife) semanticObject); 
+				return; 
+			case TasksDSLPackage.GRID:
+				sequence_Grid(context, (Grid) semanticObject); 
 				return; 
 			case TasksDSLPackage.NORMAL_CELL:
 				sequence_NormalCell(context, (NormalCell) semanticObject); 
@@ -105,11 +109,34 @@ public class TasksDSLSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     GameOfLife returns GameOfLife
 	 *
 	 * Constraint:
-	 *     ((cells+=Cell+ rules+=Rule+) | rules+=Rule+)?
+	 *     ((((grid=Grid cells+=Cell+) | cells+=Cell+)? rules+=Rule+) | rules+=Rule+)?
 	 * </pre>
 	 */
 	protected void sequence_GameOfLife(ISerializationContext context, GameOfLife semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     Grid returns Grid
+	 *
+	 * Constraint:
+	 *     (width=INT height=INT)
+	 * </pre>
+	 */
+	protected void sequence_Grid(ISerializationContext context, Grid semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, TasksDSLPackage.Literals.GRID__WIDTH) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TasksDSLPackage.Literals.GRID__WIDTH));
+			if (transientValues.isValueTransient(semanticObject, TasksDSLPackage.Literals.GRID__HEIGHT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TasksDSLPackage.Literals.GRID__HEIGHT));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getGridAccess().getWidthINTTerminalRuleCall_1_0(), semanticObject.getWidth());
+		feeder.accept(grammarAccess.getGridAccess().getHeightINTTerminalRuleCall_3_0(), semanticObject.getHeight());
+		feeder.finish();
 	}
 	
 	

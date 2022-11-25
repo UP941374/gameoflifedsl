@@ -41,8 +41,14 @@ generate tasksDSL "http://www.TasksDSL.goldsl"
 //;
 
 GameOfLife:
+	('Grid' grid=Grid)?
 	("Cells" cells+=Cell+)?
 	rules += Rule*
+;
+
+Grid:
+	'width:' width=INT
+	'height:' height=INT
 ;
 
 Cell:
@@ -76,6 +82,6 @@ enum RuleType:
 
 enum CompareSign:
 	BIGGER_THAN = '>' |
-	EQUAL = '=' |
+	EQUAL = '==' |
 	SMALLER_THAN = '<' 
 ;
