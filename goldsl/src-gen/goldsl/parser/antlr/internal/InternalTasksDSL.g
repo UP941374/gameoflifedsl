@@ -103,47 +103,50 @@ ruleGameOfLife returns [EObject current=null]
 			)
 		)?
 		(
-			otherlv_2='Cells'
-			{
-				newLeafNode(otherlv_2, grammarAccess.getGameOfLifeAccess().getCellsKeyword_1_0());
-			}
+			(
+				otherlv_2='Cells'
+				{
+					newLeafNode(otherlv_2, grammarAccess.getGameOfLifeAccess().getCellsKeyword_1_0_0());
+				}
+				(
+					(
+						{
+							newCompositeNode(grammarAccess.getGameOfLifeAccess().getCellsCellParserRuleCall_1_0_1_0());
+						}
+						lv_cells_3_0=ruleCell
+						{
+							if ($current==null) {
+								$current = createModelElementForParent(grammarAccess.getGameOfLifeRule());
+							}
+							add(
+								$current,
+								"cells",
+								lv_cells_3_0,
+								"goldsl.TasksDSL.Cell");
+							afterParserOrEnumRuleCall();
+						}
+					)
+				)
+			)
+			    |
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getGameOfLifeAccess().getCellsCellParserRuleCall_1_1_0());
+						newCompositeNode(grammarAccess.getGameOfLifeAccess().getRulesRuleParserRuleCall_1_1_0());
 					}
-					lv_cells_3_0=ruleCell
+					lv_rules_4_0=ruleRule
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getGameOfLifeRule());
 						}
 						add(
 							$current,
-							"cells",
-							lv_cells_3_0,
-							"goldsl.TasksDSL.Cell");
+							"rules",
+							lv_rules_4_0,
+							"goldsl.TasksDSL.Rule");
 						afterParserOrEnumRuleCall();
 					}
 				)
-			)+
-		)?
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getGameOfLifeAccess().getRulesRuleParserRuleCall_2_0());
-				}
-				lv_rules_4_0=ruleRule
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getGameOfLifeRule());
-					}
-					add(
-						$current,
-						"rules",
-						lv_rules_4_0,
-						"goldsl.TasksDSL.Rule");
-					afterParserOrEnumRuleCall();
-				}
 			)
 		)*
 	)

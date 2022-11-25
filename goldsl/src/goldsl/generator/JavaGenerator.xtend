@@ -24,8 +24,7 @@ class JavaGenerator {
 					   if (gameBoard[i+1][j-1]) { surrounding++; }
 					   if (gameBoard[i+1][j])   { surrounding++; }
 					   if (gameBoard[i+1][j+1]) { surrounding++; }
-					   /* only code for surving cells, so no rule if result is dead cell */
-					   /* rule B3 */
+					   
 					   //RULES:
 					   «IF Auxiliary.getRules(root).isEmpty()»
 					   	if ((!gameBoard[i][j]) && (surrounding == 3)){
@@ -54,6 +53,12 @@ class JavaGenerator {
 					   				survivingCells.add(new Point(i-1,j-1));
 					   			} 
 					   		«ENDIF»
+					   		
+					   		«IF rule.type === RuleType::DIE»
+					   			if ((gameBoard[i][j]) && (surrounding «rule.sign» «rule.n»)){
+					   				/* only code for surviving cells, so do nothing if result is dead cell */
+					   			}
+					   		«ENDIF»
 					   	«ENDFOR»
 					   «ENDIF»
 			}
@@ -65,7 +70,7 @@ class JavaGenerator {
 					survivingCells.add(new Point(«cell.x»,«cell.y»));
 				«ENDFOR»
 				// NABER
-				«FOR cell : Auxiliary.getTransformedFillCells(Auxiliary.getFillCells(root))»
+				«FOR cell : Auxiliary.getTransformedFillCells(root)»
 					survivingCells.add(new Point(«cell.x»,«cell.y»));
 				«ENDFOR»
 			}

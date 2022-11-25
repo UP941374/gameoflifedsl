@@ -109,7 +109,7 @@ public class TasksDSLSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     GameOfLife returns GameOfLife
 	 *
 	 * Constraint:
-	 *     ((((grid=Grid cells+=Cell+) | cells+=Cell+)? rules+=Rule+) | rules+=Rule+)?
+	 *     (grid=Grid | (grid=Grid (cells+=Cell | rules+=Rule)+))?
 	 * </pre>
 	 */
 	protected void sequence_GameOfLife(ISerializationContext context, GameOfLife semanticObject) {

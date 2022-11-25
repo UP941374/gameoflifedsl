@@ -42,8 +42,7 @@ generate tasksDSL "http://www.TasksDSL.goldsl"
 
 GameOfLife:
 	('Grid' grid=Grid)?
-	("Cells" cells+=Cell+)?
-	rules += Rule*
+	("Cells" cells+=Cell | rules += Rule)*
 ;
 
 Grid:

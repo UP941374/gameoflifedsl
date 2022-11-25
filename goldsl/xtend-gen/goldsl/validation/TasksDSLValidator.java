@@ -3,9 +3,13 @@
  */
 package goldsl.validation;
 
+import goldsl.tasksDSL.Cell;
 import goldsl.tasksDSL.FillCell;
+import goldsl.tasksDSL.GameOfLife;
 import goldsl.tasksDSL.Grid;
+import goldsl.tasksDSL.NormalCell;
 import goldsl.tasksDSL.Rule;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtext.validation.Check;
 
 /**
@@ -40,10 +44,24 @@ public class TasksDSLValidator extends AbstractTasksDSLValidator {
   }
 
   @Check
-  public void checkCellAreWithinBoundaries(final Grid grid) {
-    int boundary = 200;
+  public void checkGridSize(final Grid grid) {
+    int boundary = 10;
     if (((grid.getWidth() < boundary) || (grid.getHeight() < boundary))) {
-      this.error("Grid size is too small", null);
+      this.error("Minimum size of the grid should be 10x10", null);
+    }
+  }
+
+  @Check
+  public void checkCellAreWithinBoundaries(final GameOfLife root) {
+    Grid grid = root.getGrid();
+    EList<Cell> _cells = root.getCells();
+    for (final Cell cells : _cells) {
+      EList<NormalCell> _nCells = cells.getNCells();
+      for (final NormalCell nCell : _nCells) {
+        if (((nCell.getX() > grid.getWidth()) || (nCell.getY() > grid.getHeight()))) {
+          this.error("Specified cell(s) are outside the grid", null);
+        }
+      }
     }
   }
 }

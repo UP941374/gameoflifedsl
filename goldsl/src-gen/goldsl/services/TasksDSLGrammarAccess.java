@@ -31,12 +31,13 @@ public class TasksDSLGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		private final Keyword cGridKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
 		private final Assignment cGridAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
 		private final RuleCall cGridGridParserRuleCall_0_1_0 = (RuleCall)cGridAssignment_0_1.eContents().get(0);
-		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
-		private final Keyword cCellsKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
-		private final Assignment cCellsAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
-		private final RuleCall cCellsCellParserRuleCall_1_1_0 = (RuleCall)cCellsAssignment_1_1.eContents().get(0);
-		private final Assignment cRulesAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cRulesRuleParserRuleCall_2_0 = (RuleCall)cRulesAssignment_2.eContents().get(0);
+		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
+		private final Group cGroup_1_0 = (Group)cAlternatives_1.eContents().get(0);
+		private final Keyword cCellsKeyword_1_0_0 = (Keyword)cGroup_1_0.eContents().get(0);
+		private final Assignment cCellsAssignment_1_0_1 = (Assignment)cGroup_1_0.eContents().get(1);
+		private final RuleCall cCellsCellParserRuleCall_1_0_1_0 = (RuleCall)cCellsAssignment_1_0_1.eContents().get(0);
+		private final Assignment cRulesAssignment_1_1 = (Assignment)cAlternatives_1.eContents().get(1);
+		private final RuleCall cRulesRuleParserRuleCall_1_1_0 = (RuleCall)cRulesAssignment_1_1.eContents().get(0);
 		
 		////Gameoflife:
 		////    cells+=Cell*
@@ -76,14 +77,12 @@ public class TasksDSLGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		////;
 		//GameOfLife:
 		//    ('Grid' grid=Grid)?
-		//    ("Cells" cells+=Cell+)?
-		//    rules += Rule*
+		//    ("Cells" cells+=Cell | rules += Rule)*
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//('Grid' grid=Grid)?
-		//("Cells" cells+=Cell+)?
-		//rules += Rule*
+		//("Cells" cells+=Cell | rules += Rule)*
 		public Group getGroup() { return cGroup; }
 		
 		//('Grid' grid=Grid)?
@@ -98,23 +97,26 @@ public class TasksDSLGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//Grid
 		public RuleCall getGridGridParserRuleCall_0_1_0() { return cGridGridParserRuleCall_0_1_0; }
 		
-		//("Cells" cells+=Cell+)?
-		public Group getGroup_1() { return cGroup_1; }
+		//("Cells" cells+=Cell | rules += Rule)*
+		public Alternatives getAlternatives_1() { return cAlternatives_1; }
+		
+		//"Cells" cells+=Cell
+		public Group getGroup_1_0() { return cGroup_1_0; }
 		
 		//"Cells"
-		public Keyword getCellsKeyword_1_0() { return cCellsKeyword_1_0; }
+		public Keyword getCellsKeyword_1_0_0() { return cCellsKeyword_1_0_0; }
 		
-		//cells+=Cell+
-		public Assignment getCellsAssignment_1_1() { return cCellsAssignment_1_1; }
+		//cells+=Cell
+		public Assignment getCellsAssignment_1_0_1() { return cCellsAssignment_1_0_1; }
 		
 		//Cell
-		public RuleCall getCellsCellParserRuleCall_1_1_0() { return cCellsCellParserRuleCall_1_1_0; }
+		public RuleCall getCellsCellParserRuleCall_1_0_1_0() { return cCellsCellParserRuleCall_1_0_1_0; }
 		
-		//rules += Rule*
-		public Assignment getRulesAssignment_2() { return cRulesAssignment_2; }
+		//rules += Rule
+		public Assignment getRulesAssignment_1_1() { return cRulesAssignment_1_1; }
 		
 		//Rule
-		public RuleCall getRulesRuleParserRuleCall_2_0() { return cRulesRuleParserRuleCall_2_0; }
+		public RuleCall getRulesRuleParserRuleCall_1_1_0() { return cRulesRuleParserRuleCall_1_1_0; }
 	}
 	public class GridElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "goldsl.TasksDSL.Grid");
@@ -573,8 +575,7 @@ public class TasksDSLGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	////;
 	//GameOfLife:
 	//    ('Grid' grid=Grid)?
-	//    ("Cells" cells+=Cell+)?
-	//    rules += Rule*
+	//    ("Cells" cells+=Cell | rules += Rule)*
 	//;
 	public GameOfLifeElements getGameOfLifeAccess() {
 		return pGameOfLife;

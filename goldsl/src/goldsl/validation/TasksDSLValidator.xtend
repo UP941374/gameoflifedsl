@@ -4,7 +4,9 @@
 package goldsl.validation
 
 import goldsl.tasksDSL.FillCell
+import goldsl.tasksDSL.GameOfLife
 import goldsl.tasksDSL.Grid
+import goldsl.tasksDSL.NormalCell
 import goldsl.tasksDSL.Rule
 import org.eclipse.xtext.validation.Check
 
@@ -27,32 +29,43 @@ class TasksDSLValidator extends AbstractTasksDSLValidator {
 //	}
 	@Check
 	def checkFillCellsAmount(FillCell fillCell) {
-		if (!(fillCell.repAmount > 1)){
+		if (!(fillCell.repAmount > 1)) {
 			warning("The repetition amount should be greater than 1", null);
 		}
 	}
-	
+
 	@Check
 	def checkSurroundingssAmount(Rule rule) {
-		if (rule.n > 8 || rule.n < 0){
+		if (rule.n > 8 || rule.n < 0) {
 			error("A cell can only have between 0 and 8 neighbours", null);
 		}
 	}
-	
+
 	@Check
 	def checkGridIsSpecified(Grid grid) {
 		if (grid === null) {
 			info("You can specify your own grid size with 'Grid width: x height: y'", null);
 		}
 	}
-	
+
 	@Check
-	def checkCellAreWithinBoundaries(Grid grid) {
-		var boundary = 200;
-		if (grid.width < boundary || grid.height < boundary){
-			error("Grid size is too small", null);
+	def checkGridSize(Grid grid) {
+		var boundary = 10;
+		if (grid.width < boundary || grid.height < boundary) {
+			error("Minimum size of the grid should be 10x10", null);
 		}
-		
 	}
 
+	@Check
+	def checkCellAreWithinBoundaries(GameOfLife root) {
+		var grid = root.grid;
+		for (cells : root.cells) {
+			for (nCell : cells.NCells) {
+				if (nCell.x > grid.width || nCell.y > grid.height) {
+					error("Specified cell(s) are outside the grid", null);
+				}
+			}
+		}
+
+	}
 }

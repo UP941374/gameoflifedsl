@@ -46,26 +46,29 @@ class Auxiliary {
 		return fCellsList;
 	}
 
-	def static List<TempCell> getTransformedFillCells(List<FillCell> fCells) {
+	def static List<TempCell> getTransformedFillCells(GameOfLife root) {
 		var List<TempCell> nCellsList = new ArrayList<TempCell>();
 
-		for (fCell : fCells) {
-			var tempX = fCell.x;
-			var tempY = fCell.y;
-
-			for (var i = 0; i < fCell.repAmount; i++) {
-				switch (fCell.dir) {
-					case (Direction::NORTH): {
-						nCellsList.add(new TempCell(fCell.x, tempY++));
-					}
-					case (Direction::EAST): {
-						nCellsList.add(new TempCell(tempX++, fCell.y));
-					}
-					case (Direction::SOUTH): {
-						nCellsList.add(new TempCell(fCell.x, tempY--));
-					}
-					case (Direction::WEST): {
-						nCellsList.add(new TempCell(tempX--, fCell.y));
+		for (cell : root.cells) {
+			for (fCell : root.fillCells) {
+				var tempX = fCell.x;
+				var tempY = fCell.y; // -1
+				for (var i = 0; i < fCell.repAmount; i++) { // rep: 4
+					if (!(tempX < 0 || tempX > root.grid.width || tempY < 0 || tempY > root.grid.height)) { // -1 < 0
+						switch (fCell.dir) {
+							case (Direction::NORTH): {
+								nCellsList.add(new TempCell(fCell.x, tempY--));
+							}
+							case (Direction::EAST): {
+								nCellsList.add(new TempCell(tempX++, fCell.y));
+							}
+							case (Direction::SOUTH): {
+								nCellsList.add(new TempCell(fCell.x, tempY++));
+							}
+							case (Direction::WEST): {
+								nCellsList.add(new TempCell(tempX--, fCell.y));
+							}
+						}
 					}
 				}
 			}
